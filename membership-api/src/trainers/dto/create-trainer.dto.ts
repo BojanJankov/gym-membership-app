@@ -19,6 +19,9 @@ export class CreateTrainerDto {
   @MaxLength(30)
   lastName: string;
 
+  @IsString()
+  photo: string;
+
   @IsNumber()
   @Min(0)
   @Max(75)

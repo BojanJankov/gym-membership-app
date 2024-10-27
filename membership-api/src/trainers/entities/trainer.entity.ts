@@ -12,6 +12,9 @@ export class Trainer {
   lastName: string;
 
   @Column()
+  photo: string;
+
+  @Column()
   age: number;
 
   @Column()
