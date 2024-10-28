@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { RoleType } from 'src/roles/roles.model';
+import { Membership } from 'src/memberships/entities/membership.entity';
 
 @Entity()
 export class User {
@@ -40,4 +41,7 @@ export class User {
     nullable: true,
   })
   refreshTokens: string[];
+
+  @OneToMany(() => Membership, (memberships) => memberships.user)
+  memberships: Membership[];
 }

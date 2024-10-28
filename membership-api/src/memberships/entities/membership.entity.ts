@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Plan } from 'src/plans/entities/plan.entity';
+import { User } from 'src/users/entities/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Membership {
@@ -13,4 +21,12 @@ export class Membership {
 
   @Column()
   paymentStatus: 'PAID' | 'PENDING';
+
+  @JoinColumn()
+  @ManyToOne(() => Plan, (plan) => plan.memberships)
+  plan: Plan;
+
+  @JoinColumn()
+  @ManyToOne(() => User, (user) => user.memberships)
+  user: User;
 }

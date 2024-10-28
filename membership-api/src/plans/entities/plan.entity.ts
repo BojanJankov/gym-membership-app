@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Membership } from 'src/memberships/entities/membership.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Plan {
@@ -13,4 +14,7 @@ export class Plan {
 
   @Column()
   description: string;
+
+  @OneToMany(() => Membership, (membership) => membership.plan)
+  memberships: Membership[];
 }

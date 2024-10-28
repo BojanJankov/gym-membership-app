@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class CreateMembershipDto {
   @IsString()
@@ -9,4 +9,10 @@ export class CreateMembershipDto {
 
   @IsString()
   paymentStatus: 'PAID' | 'PENDING';
+
+  @IsString()
+  userId: string;
+
+  @IsNumber()
+  planId: number;
 }

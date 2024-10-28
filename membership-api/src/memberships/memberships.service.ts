@@ -13,7 +13,11 @@ export class MembershipsService {
   ) {}
 
   create(createMembershipDto: CreateMembershipDto) {
-    return this.membershipRepo.save(createMembershipDto);
+    return this.membershipRepo.save({
+      ...createMembershipDto,
+      user: { id: createMembershipDto.userId },
+      plan: { id: createMembershipDto.planId },
+    });
   }
 
   findAll() {
