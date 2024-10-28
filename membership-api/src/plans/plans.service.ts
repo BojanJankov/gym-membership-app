@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class PlansService {
   constructor(@InjectRepository(Plan) private plansRepo: Repository<Plan>) {}
+
   create(createPlanDto: CreatePlanDto) {
     return this.plansRepo.save(createPlanDto);
   }

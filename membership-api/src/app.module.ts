@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrainersModule } from './trainers/trainers.module';
 import { PlansModule } from './plans/plans.module';
+import { MembershipsModule } from './memberships/memberships.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { PlansModule } from './plans/plans.module';
     AuthModule,
     TrainersModule,
     PlansModule,
+    MembershipsModule,
   ],
 
   controllers: [AppController],
