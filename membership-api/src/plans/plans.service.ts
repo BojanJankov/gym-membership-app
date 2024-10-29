@@ -14,7 +14,11 @@ export class PlansService {
   }
 
   findAll() {
-    return this.plansRepo.find({});
+    return this.plansRepo.find({
+      relations: {
+        memberships: true,
+      },
+    });
   }
 
   async findOne(id: number) {

@@ -20,6 +20,8 @@ export class RolesGuard implements CanActivate {
 
     if (user.role !== role) return false;
 
+    console.log('mojo role', user.role);
+
     return true;
   }
 }

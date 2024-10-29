@@ -48,6 +48,8 @@ export class AuthService {
 
     const token = await this.jwtService.signAsync({ id: foundUser.id });
 
+    console.log('access-token', token);
+
     const refreshToken = await this.jwtService.signAsync(
       { id: foundUser.id },
       {

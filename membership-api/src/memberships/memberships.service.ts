@@ -12,8 +12,9 @@ export class MembershipsService {
     private membershipRepo: Repository<Membership>,
   ) {}
 
-  create(createMembershipDto: CreateMembershipDto) {
-    return this.membershipRepo.save({
+  async create(createMembershipDto: CreateMembershipDto) {
+    console.log('from create', createMembershipDto);
+    return await this.membershipRepo.save({
       ...createMembershipDto,
       user: { id: createMembershipDto.userId },
       plan: { id: createMembershipDto.planId },
@@ -21,7 +22,20 @@ export class MembershipsService {
   }
 
   findAll() {
-    return this.membershipRepo.find({});
+    return this.membershipRepo.find({
+      relations: {
+        plan: true,
+        user: true,
+      },
+      select: {
+        user: {
+          firstName: true,
+          lastName: true,
+          username: true,
+          email: true,
+        },
+      },
+    });
   }
 
   async findOne(id: number) {
@@ -32,6 +46,14 @@ export class MembershipsService {
     } catch (error) {
       throw new BadRequestException('Membership Not Found');
     }
+  }
+
+  findMembershipsByUserId(userId: string) {
+    return this.membershipRepo.find({
+      where: {
+        user: { id: userId },
+      },
+    });
   }
 
   async update(id: number, updateMembershipDto: UpdateMembershipDto) {

@@ -14,8 +14,9 @@ import { UpdatePlanDto } from './dto/update-plan.dto';
 import { RolesGuard } from 'src/roles/roles.guard';
 import { Roles } from 'src/roles/roles.decorator';
 import { RoleType } from 'src/roles/roles.model';
+import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(RolesGuard)
+@UseGuards(AuthGuard, RolesGuard)
 @Controller('plans')
 export class PlansController {
   constructor(private readonly plansService: PlansService) {}
