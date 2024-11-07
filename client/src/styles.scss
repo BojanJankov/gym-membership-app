@@ -10,9 +10,11 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-  background: var(--background-color);
+  background: var(--black-color);
 }
 
 main {
   padding: 50px 20px;
+  background-color: var(--black-color);
+  min-height: 800px;
 }
