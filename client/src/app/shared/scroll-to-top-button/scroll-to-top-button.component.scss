@@ -1,0 +1,28 @@
+.to-top {
+  border: 0.5px solid var(--white-color);
+  color: var(--font-color);
+  background-color: var(--yellow-color);
+  cursor: pointer;
+  padding: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  &:hover {
+    background-color: var(--orange-color);
+    transform: translateY(-2px);
+  }
+}
+
+.show-scrollTop {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}

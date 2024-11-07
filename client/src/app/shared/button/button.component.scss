@@ -1,0 +1,17 @@
+button {
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  color: var(--font-color);
+  background-color: var(--yellow-color);
+  min-width: 150px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  &:hover {
+    background-color: var(--orange-color);
+    transform: translateY(-2px);
+  }
+}

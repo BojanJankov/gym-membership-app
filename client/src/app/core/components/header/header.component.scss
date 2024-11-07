@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr max-content;
   align-items: center;
-  padding: 20px 40px;
+  padding: 25px 40px;
   background-color: var(--black-color);
 
   .logo-container {
@@ -36,8 +36,7 @@
 
       &:hover,
       &.active {
-        background-color: var(--acitve-backgruon);
-        color: var(--active-color);
+        color: var(--orange-color);
       }
     }
   }

@@ -1,0 +1,47 @@
+.hero {
+  background-color: var(--yellow-color);
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: var(--orange-color);
+}
+
+.hero p {
+  font-size: 20px;
+  color: var(--font-color);
+}
+
+.about-us {
+  padding: 40px 20px;
+}
+
+.about-us .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2,
+h3 {
+  color: var(--orange-color);
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: var(--font-color);
+}
+
+ul {
+  margin-left: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--font-color);
+}
