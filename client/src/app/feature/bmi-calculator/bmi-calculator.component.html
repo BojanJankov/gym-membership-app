@@ -31,7 +31,7 @@
   <div class="result">
     @if(isSubbmited() && this.bmiForm.invalid) {
     <p class="form-error">Enter valid parametars!</p>
-    } @if(this.bmi() !== 0){
+    } @if(this.bmi() !== null){
     <h3>Your BMI: {{ bmi() }}</h3>
     <h3>Status: {{ status() }}</h3>
     }

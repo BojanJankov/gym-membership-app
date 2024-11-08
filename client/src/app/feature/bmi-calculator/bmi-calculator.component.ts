@@ -17,16 +17,16 @@ import { ButtonComponent } from '../../shared/button/button.component';
 export class BmiCalculatorComponent {
   bmiForm = this.generateBmiForm();
   isSubbmited = signal<boolean>(false);
-  bmi = signal<number>(0);
+  bmi = signal<number>(null);
   status = signal<string>('');
 
   generateBmiForm() {
     return new FormGroup({
-      weight: new FormControl<number | null>(null, [
+      weight: new FormControl<number>(null, [
         Validators.required,
         Validators.min(0),
       ]),
-      height: new FormControl<number | null>(null, [
+      height: new FormControl<number>(null, [
         Validators.required,
         Validators.min(0),
       ]),

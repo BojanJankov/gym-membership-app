@@ -1,0 +1,15 @@
+.not-found-page {
+  min-height: 600px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  h2 {
+    font-size: 42px;
+    color: var(--orange-color);
+  }
+
+  a {
+    color: var(--yellow-color);
+  }
+}
