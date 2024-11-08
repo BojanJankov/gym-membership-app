@@ -1,1 +1,39 @@
-<p>bmi-calculator works!</p>
+<div class="container">
+  <h1>Arena Fitness</h1>
+  <h3>BMI CALCULATOR</h3>
+  <form [formGroup]="bmiForm" (ngSubmit)="onFormSubmit()">
+    <div class="input-group">
+      <label>
+        Weight (kg):
+        <input
+          placeholder="Enter your weight"
+          type="text"
+          formControlName="weight"
+        />
+      </label>
+    </div>
+    <div class="input-group">
+      <label>
+        Height (cm):
+        <input
+          formControlName="height"
+          type="text"
+          placeholder="Enter your height"
+        />
+      </label>
+    </div>
+    <app-button
+      text="Calculate"
+      type="submit"
+      [style]="{ backgroundColor: '#bc3908' }"
+    />
+  </form>
+  <div class="result">
+    @if(isSubbmited() && this.bmiForm.invalid) {
+    <p class="form-error">Enter valid parametars!</p>
+    } @if(this.bmi() !== 0){
+    <h3>Your BMI: {{ bmi() }}</h3>
+    <h3>Status: {{ status() }}</h3>
+    }
+  </div>
+</div>
