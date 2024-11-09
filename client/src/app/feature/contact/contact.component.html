@@ -48,20 +48,26 @@
                   placeholder="How are you looking to use Tech Sphere..."
                   formControlName="message"
                 ></textarea>
-                <p>
-                  {{ contactForm.get("message")?.value?.length }}/{{
-                    messageMaxLength
-                  }}
-                </p>
               </div>
             </div>
             <div class="send-button">
-              <div class="inputBox">
+              @if(isSubbmited() && this.contactForm.invalid &&
+              this.contactForm.touched){
+              <p class="form-error">Enter valid informations!</p>
+              }
+              <div class="inputBox-buttons-container">
                 <app-button
                   text="Send"
                   type="submit"
                   [style]="{ backgroundColor: '#bc3908' }"
                 />
+                @if(isResetShown()){
+                <app-button
+                  text="Reset"
+                  (btnClick)="onResetClick()"
+                  [style]="{ backgroundColor: '#bc3908' }"
+                />
+                }
               </div>
             </div>
           </div>

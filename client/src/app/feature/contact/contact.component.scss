@@ -140,6 +140,12 @@
   }
 }
 
+.inputBox-buttons-container {
+  padding-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
 @media only screen and (max-width: 440px) {
   .contact-main {
     padding: 5px 5px;
