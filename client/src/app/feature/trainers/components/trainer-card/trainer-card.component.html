@@ -1,0 +1,47 @@
+<div class="outer-div">
+  <div class="inner-div">
+    <div class="front">
+      <div class="front__bkg-photo"></div>
+      <div class="front__face-photo">
+        <img src="{{ trainer().photo }}" alt="Trainer profile picutre" />
+      </div>
+      <div class="front__text">
+        <h3 class="front__text-header">
+          {{ trainer().firstName }} {{ trainer().lastName }}
+        </h3>
+        <div class="front__text-para">
+          <div class="front_text-div">
+            <i class="fa-solid fa-champagne-glasses"></i
+            ><span>{{ trainer().age }}</span>
+          </div>
+          <div class="front_text-div">
+            <i class="fa-solid fa-phone"></i>{{ trainer().phoneNumber }}
+          </div>
+          <div class="front_text-div">
+            <i class="fa-solid fa-envelope"></i>{{ trainer().email }}
+          </div>
+          <div class="front_text-div">
+            <i class="fa-solid fa-dumbbell"></i>{{ trainer().expirience }} years
+          </div>
+        </div>
+        <span class="front__text-hover">Hover to Find Me</span>
+      </div>
+    </div>
+    <div class="back">
+      <div class="social-media-wrapper">
+        <a href="#" class="social-icon"
+          ><i class="fab fa-youtube" aria-hidden="true"></i
+        ></a>
+        <a href="#" class="social-icon"
+          ><i class="fab fa-square-facebook" aria-hidden="true"></i
+        ></a>
+        <a href="#" class="social-icon"
+          ><i class="fab fa-instagram" aria-hidden="true"></i
+        ></a>
+        <a href="#" class="social-icon"
+          ><i class="fab fa-linkedin" aria-hidden="true"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>

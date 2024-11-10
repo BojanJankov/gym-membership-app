@@ -6,7 +6,9 @@ import { BmiCalculatorComponent } from './feature/bmi-calculator/bmi-calculator.
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './feature/auth/components/login/login.component';
 import { RegisterComponent } from './feature/auth/components/register/register.component';
-import { loginRegisterGuard } from './core/guards';
+import { AuthGuard, loginRegisterGuard } from './core/guards';
+import { TrainersComponent } from './feature/trainers/components/trainers/trainers.component';
+import { PlansComponent } from './feature/plans/components/plans/plans.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +26,16 @@ export const routes: Routes = [
   {
     path: 'bmi-calculator',
     component: BmiCalculatorComponent,
+  },
+  {
+    path: 'plans',
+    component: PlansComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'trainers',
+    component: TrainersComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

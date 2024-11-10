@@ -1,0 +1,10 @@
+<section class="trainers-page">
+  <div class="trainers-heading">
+    <h2>All our trainers</h2>
+  </div>
+  <div class="trainers-container">
+    @for(trainer of trainers(); track $index){
+    <app-trainer-card [trainer]="trainer" />
+    }
+  </div>
+</section>
