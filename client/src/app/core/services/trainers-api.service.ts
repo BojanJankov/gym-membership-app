@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_URL } from '../constants/core.constants';
-import { Trainer } from '../../feature/trainers/models/trainers.model';
+import {
+  Trainer,
+  TrainerReq,
+} from '../../feature/trainers/models/trainers.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,5 +14,17 @@ export class TrainersApiService {
 
   fetchAllTrainers() {
     return this.http.get<Trainer[]>(`${BASE_URL}/trainers`);
+  }
+
+  postTrainer(request: TrainerReq) {
+    return this.http.post(`${BASE_URL}/trainers`, request);
+  }
+
+  patchTrainer(trainerId: number, request: TrainerReq) {
+    return this.http.patch(`${BASE_URL}/trainers/${trainerId}`, request);
+  }
+
+  deleteTrainer(trainerId: number) {
+    return this.http.delete(`${BASE_URL}/trainers/${trainerId}`);
   }
 }
