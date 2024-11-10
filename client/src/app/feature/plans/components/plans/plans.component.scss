@@ -1,0 +1,19 @@
+.plans-page {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+
+  .plans-heading {
+    h2 {
+      font-size: 34px;
+      color: var(--orange-color);
+    }
+  }
+
+  .plans-container {
+    display: flex;
+    gap: 30px;
+  }
+}

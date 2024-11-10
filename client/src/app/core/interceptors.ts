@@ -21,6 +21,8 @@ export const authIntercepor = (req: HttpRequest<any>, next: HttpHandlerFn) => {
 
   const token = authService.currentUser().token;
 
+  console.log('front-end token', token);
+
   const clonedReq = req.clone({
     headers: req.headers.set('Authorization', `Bearer ${token}`),
   });

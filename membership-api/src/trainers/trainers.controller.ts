@@ -14,8 +14,9 @@ import { UpdateTrainerDto } from './dto/update-trainer.dto';
 import { RolesGuard } from 'src/roles/roles.guard';
 import { Roles } from 'src/roles/roles.decorator';
 import { RoleType } from 'src/roles/roles.model';
+import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(RolesGuard)
+@UseGuards(AuthGuard, RolesGuard)
 @Controller('trainers')
 export class TrainersController {
   constructor(private readonly trainersService: TrainersService) {}
