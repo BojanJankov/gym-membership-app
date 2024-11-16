@@ -9,6 +9,10 @@ import { RegisterComponent } from './feature/auth/components/register/register.c
 import { AuthGuard, loginRegisterGuard } from './core/guards';
 import { TrainersComponent } from './feature/trainers/components/trainers/trainers.component';
 import { PlansComponent } from './feature/plans/components/plans/plans.component';
+import { AddPlanComponent } from './feature/plans/components/add-plan/add-plan.component';
+import { EditPlanComponent } from './feature/plans/components/edit-plan/edit-plan.component';
+import { EditTrainerComponent } from './feature/trainers/components/edit-trainer/edit-trainer.component';
+import { AddTrainerComponent } from './feature/trainers/components/add-trainer/add-trainer.component';
 
 export const routes: Routes = [
   {
@@ -33,8 +37,28 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'add-plan',
+    component: AddPlanComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-plan',
+    component: EditPlanComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'trainers',
     component: TrainersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-trainer',
+    component: AddTrainerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-trainer',
+    component: EditTrainerComponent,
     canActivate: [AuthGuard],
   },
   {

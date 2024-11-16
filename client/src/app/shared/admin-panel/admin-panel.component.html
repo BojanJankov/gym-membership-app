@@ -1,0 +1,12 @@
+<div class="admin-panel-container">
+  <div>
+    <h2>{{ addButtonTextInput() }}</h2>
+  </div>
+  <div class="add-button-container">
+    <app-button
+      [text]="addButtonTextInput()"
+      (btnClick)="odAddButtonClick()"
+      [style]="{ backroundColor: '#bc3908' }"
+    />
+  </div>
+</div>

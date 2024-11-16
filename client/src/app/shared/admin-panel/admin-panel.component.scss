@@ -1,0 +1,14 @@
+.admin-panel-container {
+  position: absolute;
+  z-index: 9999;
+  right: 0;
+  top: 115px;
+  width: 250px;
+  height: 135px;
+  border: 1px solid var(--orange-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--yellow-color);
+  margin: 10px;
+}

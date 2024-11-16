@@ -1,6 +1,12 @@
 <section class="trainers-page">
   <div class="trainers-heading">
     <h2>All our trainers</h2>
+    @if(currentUser().role === "admin"){
+    <app-admin-panel
+      addButtonTextInput="Add trainer"
+      (addButtonOutput)="onAddTrainerClick()"
+    />
+    }
   </div>
   <div class="trainers-container">
     @for(trainer of trainers(); track $index){

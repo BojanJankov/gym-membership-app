@@ -1,6 +1,12 @@
 <section class="plans-page">
   <div class="plans-heading">
     <h2>Plans</h2>
+    @if(currentUser().role === "admin"){
+    <app-admin-panel
+      addButtonTextInput="Add plan"
+      (addButtonOutput)="onAddPLanClick()"
+    />
+    }
   </div>
   <div class="plans-container">
     @for(plan of plans(); track $index){
