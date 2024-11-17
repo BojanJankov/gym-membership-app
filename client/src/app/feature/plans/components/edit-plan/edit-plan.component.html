@@ -1,1 +1,6 @@
-<p>edit-plan works!</p>
+<section class="add-plan-page">
+  <app-plan-form
+    (subbmitOutput)="onEditOutput($event)"
+    [editPlanData]="selectedPlan()"
+  />
+</section>

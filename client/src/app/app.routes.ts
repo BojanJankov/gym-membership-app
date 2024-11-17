@@ -42,7 +42,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit-plan',
+    path: 'edit-plan/:id',
     component: EditPlanComponent,
     canActivate: [AuthGuard],
   },

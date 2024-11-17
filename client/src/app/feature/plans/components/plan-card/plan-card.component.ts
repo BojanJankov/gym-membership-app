@@ -5,7 +5,7 @@ import { ButtonComponent } from '../../../../shared/button/button.component';
 @Component({
   selector: 'app-plan-card',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [],
   templateUrl: './plan-card.component.html',
   styleUrl: './plan-card.component.scss',
 })

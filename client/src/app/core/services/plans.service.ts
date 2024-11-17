@@ -9,11 +9,21 @@ export class PlansService {
   private apiService = inject(PlansApiService);
 
   plans = signal<Plan[]>([]);
+  selectedPlan = signal<Plan>(null);
 
   getAllPlans() {
     this.apiService.fetchAllPlans().subscribe({
       next: (response) => {
         this.plans.set(response);
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  getPlanById(planId: number) {
+    this.apiService.fetchPlanById(planId).subscribe({
+      next: (response) => {
+        this.selectedPlan.set(response);
       },
       error: (error) => console.log(error),
     });

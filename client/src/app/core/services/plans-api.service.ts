@@ -13,6 +13,10 @@ export class PlansApiService {
     return this.http.get<Plan[]>(`${BASE_URL}/plans`);
   }
 
+  fetchPlanById(planId: number) {
+    return this.http.get<Plan>(`${BASE_URL}/plans/${planId}`);
+  }
+
   postPlan(planReq: PlanReq) {
     return this.http.post(`${BASE_URL}/plans`, planReq);
   }

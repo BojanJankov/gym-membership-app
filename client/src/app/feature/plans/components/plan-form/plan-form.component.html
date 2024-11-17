@@ -1,1 +1,43 @@
-<p>plan-form works!</p>
+<form class="form" [formGroup]="planForm" (ngSubmit)="onFormSubbmit()">
+  <div>
+    <h2>Add plan</h2>
+  </div>
+  <div class="form-group">
+    <label for="name">Plan name</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder="Plan name..."
+    />
+  </div>
+  <div class="form-group">
+    <label for="fee">Plan fee</label>
+    <input
+      id="fee"
+      type="number"
+      formControlName="fee"
+      placeholder="Your plan fee..."
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Plan description</label>
+    <textarea
+      type="text"
+      formControlName="description"
+      placeholder="Plan description..."
+    ></textarea>
+  </div>
+  <div class="error-form-message-container">
+    @if(isSubbmited() && planForm.invalid && planForm.touched){
+    <p class="form-error">All fileds are required!</p>
+    }
+  </div>
+  <div class="login-form-button-div">
+    @if(editPlanData()){
+    <app-button text="Edit plan" class="register-button" type="submit" />
+    } @else {
+    <app-button text="Add plan" class="register-button" type="submit" />
+    }
+  </div>
+</form>
