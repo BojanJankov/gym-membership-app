@@ -26,6 +26,6 @@ export class PlansApiService {
   }
 
   deletePlan(planId: number) {
-    return this.http.delete(`${BASE_URL}/plans`);
+    return this.http.delete(`${BASE_URL}/plans/${planId}`);
   }
 }

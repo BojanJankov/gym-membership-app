@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PlanFormComponent } from '../plan-form/plan-form.component';
 import { PlanReq } from '../../models/plans.model';
 import { PlansService } from '../../../../core/services/plans.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-plan',
@@ -12,8 +13,10 @@ import { PlansService } from '../../../../core/services/plans.service';
 })
 export class AddPlanComponent {
   private planService = inject(PlansService);
+  private router = inject(Router);
 
   onAddOutput(planData: PlanReq) {
     this.planService.createPlan(planData);
+    this.router.navigate(['plans']);
   }
 }

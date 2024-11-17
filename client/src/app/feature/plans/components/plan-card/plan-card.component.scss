@@ -21,6 +21,41 @@ article {
   }
 }
 
+.fee-container {
+  display: flex;
+  align-items: center;
+}
+
+.fee-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-div-container {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: var(--orange-color);
+  border: none;
+  color: var(--font-color);
+  padding: 8px 13px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button {
+  background-color: var(--error);
+
+  &:hover {
+    background-color: #b31b1b;
+  }
+}
+
 article h2 {
   margin: 0 0 18px 0;
   font-size: 28px;

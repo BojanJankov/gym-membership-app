@@ -22,6 +22,7 @@ export class EditPlanComponent {
 
   onEditOutput(editData: PlanReq) {
     this.planService.updatePlan(this.selectedPlan().id, editData);
+    this.router.navigate(['plans']);
   }
 
   constructor() {

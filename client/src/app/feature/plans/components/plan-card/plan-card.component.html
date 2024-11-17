@@ -11,9 +11,20 @@
       <p>
         {{ plan().description }}
       </p>
-      <div>
-        <strong>{{ plan().fee }}$</strong>
-        <div></div>
+      <div class="fee-buttons-container">
+        <div class="fee-container">
+          <strong>{{ plan().fee }}$</strong>
+        </div>
+        @if(currentUser().role === "admin"){
+        <div class="button-div-container">
+          <button class="edit-button" (click)="onPlanNavigate('edit')">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+          <button class="delete-button" (click)="onPlanNavigate('delete')">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+        }
       </div>
     </div>
   </div>
