@@ -12,6 +12,7 @@ export class TrainersService {
   private apiService = inject(TrainersApiService);
 
   trainers = signal<Trainer[]>([]);
+  selectedTrainer = signal<Trainer>(null);
 
   getAllTrainers() {
     this.apiService.fetchAllTrainers().subscribe({
@@ -19,6 +20,17 @@ export class TrainersService {
         this.trainers.set(response);
       },
       error: (error) => console.log(error),
+    });
+  }
+
+  getTrainerById(trainerId: number) {
+    this.apiService.fetchTrainerByID(trainerId).subscribe({
+      next: (response) => {
+        this.selectedTrainer.set(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 

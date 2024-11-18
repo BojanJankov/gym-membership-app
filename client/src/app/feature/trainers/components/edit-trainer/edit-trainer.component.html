@@ -1,1 +1,6 @@
-<p>edit-trainer works!</p>
+<section class="edit-trainer-page">
+  <app-trainer-form
+    (subbmitOutput)="onEditTrainer($event)"
+    [editTrainerData]="selectedTrainer()"
+  ></app-trainer-form>
+</section>

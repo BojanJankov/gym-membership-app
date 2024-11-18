@@ -57,7 +57,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit-trainer',
+    path: 'edit-trainer/:id',
     component: EditTrainerComponent,
     canActivate: [AuthGuard],
   },

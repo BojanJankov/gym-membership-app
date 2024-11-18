@@ -79,12 +79,30 @@ export class TrainerFormComponent {
     });
   }
 
+  onFileSelected(event: any): void {
+    console.log('on image file change');
+    console.log(event);
+    const file = event.target.files[0];
+    if (file) {
+      this.convertFileToBase64(file);
+    }
+  }
+
+  private convertFileToBase64(file: File): void {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.trainerForm.controls['photo'].setValue(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+
   onFormSubbmit() {
     this.trainerForm.markAllAsTouched();
+    this.isSubbmited.set(true);
 
     if (this.trainerForm.invalid) return;
 
-    const createPlanData: TrainerReq = {
+    const createTrainerData: TrainerReq = {
       firstName: this.trainerForm.get('firstName').value,
       lastName: this.trainerForm.get('lastName').value,
       photo: this.trainerForm.get('photo').value,
@@ -94,6 +112,6 @@ export class TrainerFormComponent {
       email: this.trainerForm.get('email').value,
     };
 
-    this.subbmitOutput.emit(createPlanData);
+    this.subbmitOutput.emit(createTrainerData);
   }
 }

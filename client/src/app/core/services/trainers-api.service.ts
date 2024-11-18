@@ -16,6 +16,10 @@ export class TrainersApiService {
     return this.http.get<Trainer[]>(`${BASE_URL}/trainers`);
   }
 
+  fetchTrainerByID(trainerId: number) {
+    return this.http.get<Trainer>(`${BASE_URL}/trainers/${trainerId}`);
+  }
+
   postTrainer(request: TrainerReq) {
     return this.http.post(`${BASE_URL}/trainers`, request);
   }
