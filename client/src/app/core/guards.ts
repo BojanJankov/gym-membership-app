@@ -25,3 +25,15 @@ export const loginRegisterGuard = () => {
 
   return true;
 };
+
+export const AdminGuard = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.currentUser().role !== 'admin') {
+    router.navigate(['not-found']);
+    return false;
+  }
+
+  return true;
+};

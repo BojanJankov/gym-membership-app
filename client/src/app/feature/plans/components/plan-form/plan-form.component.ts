@@ -26,6 +26,7 @@ import { ButtonComponent } from '../../../../shared/button/button.component';
 export class PlanFormComponent {
   currentUser = inject(AuthService).currentUser;
   editPlanData = input<Plan>();
+  formTitle = input.required<string>();
   planForm = this.generatePlanForm();
   isSubbmited = signal<boolean>(false);
   subbmitOutput = output<PlanReq>();

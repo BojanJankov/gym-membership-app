@@ -1,4 +1,7 @@
 <form class="form" [formGroup]="planForm" (ngSubmit)="onFormSubbmit()">
+  <div>
+    <h2>{{ formTitle() }}</h2>
+  </div>
   <div class="form-group">
     <label for="name">Plan name</label>
     <input

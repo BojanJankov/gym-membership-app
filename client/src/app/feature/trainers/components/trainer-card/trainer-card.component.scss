@@ -181,7 +181,8 @@ $card-width: 300px;
   background-color: var(--yellow-color);
   border-radius: 5px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -225,4 +226,21 @@ $card-width: 300px;
 
 .fab:hover {
   top: -5px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: var(--orange-color);
+  border: none;
+  color: var(--font-color);
+  padding: 8px 13px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-panel-wrapper {
+  display: flex;
+  gap: 5px;
 }

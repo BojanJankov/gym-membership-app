@@ -1,11 +1,24 @@
 <form class="form" [formGroup]="trainerForm" (ngSubmit)="onFormSubbmit()">
-  <div class="form-group">
-    <label for="firstName">FirstName</label>
-    <input id="firstName" type="text" formControlName="firstName" />
+  <div>
+    <h2>{{ formTitle() }}</h2>
   </div>
   <div class="form-group">
-    <label for="lastName">LastName</label>
-    <input id="lastName" type="text" formControlName="lastName" />
+    <label for="firstName">First Name</label>
+    <input
+      id="firstName"
+      type="text"
+      formControlName="firstName"
+      placeholder="Your first name..."
+    />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      id="lastName"
+      type="text"
+      formControlName="lastName"
+      placeholder="Your last name..."
+    />
   </div>
   <div class="form-group">
     <label for="photo">Photo</label>
@@ -13,24 +26,44 @@
       id="photo"
       type="file"
       (change)="onFileSelected($event)"
-      accept="*/image"
+      accept="image/*"
     />
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input id="email" type="email" formControlName="email" />
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Your email..."
+    />
   </div>
   <div class="form-group">
     <label for="age">Age</label>
-    <input id="age" type="number" formControlName="age" />
+    <input
+      id="age"
+      type="number"
+      formControlName="age"
+      placeholder="Your age..."
+    />
   </div>
   <div class="form-group">
     <label for="phoneNumber">Phone number</label>
-    <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+    <input
+      id="phoneNumber"
+      type="text"
+      formControlName="phoneNumber"
+      placeholder="Your phone number..."
+    />
   </div>
   <div class="form-group">
     <label for="expirience">Expirience</label>
-    <input id="expirience" type="number" formControlName="expirience" />
+    <input
+      id="expirience"
+      type="number"
+      formControlName="expirience"
+      placeholder="Your expirience..."
+    />
   </div>
   <div class="error-form-message-container">
     @if(isSubbmited() && trainerForm.invalid && trainerForm.touched){

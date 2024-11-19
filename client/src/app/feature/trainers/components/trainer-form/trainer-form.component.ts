@@ -26,6 +26,7 @@ import { ButtonComponent } from '../../../../shared/button/button.component';
 export class TrainerFormComponent {
   currentUser = inject(AuthService).currentUser;
   editTrainerData = input<Trainer>();
+  formTitle = input.required<string>();
   trainerForm = this.generateTrainerForm();
   isSubbmited = signal<boolean>(false);
   subbmitOutput = output<TrainerReq>();

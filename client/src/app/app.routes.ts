@@ -6,7 +6,7 @@ import { BmiCalculatorComponent } from './feature/bmi-calculator/bmi-calculator.
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './feature/auth/components/login/login.component';
 import { RegisterComponent } from './feature/auth/components/register/register.component';
-import { AuthGuard, loginRegisterGuard } from './core/guards';
+import { AdminGuard, AuthGuard, loginRegisterGuard } from './core/guards';
 import { TrainersComponent } from './feature/trainers/components/trainers/trainers.component';
 import { PlansComponent } from './feature/plans/components/plans/plans.component';
 import { AddPlanComponent } from './feature/plans/components/add-plan/add-plan.component';
@@ -39,12 +39,12 @@ export const routes: Routes = [
   {
     path: 'add-plan',
     component: AddPlanComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'edit-plan/:id',
     component: EditPlanComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'trainers',
@@ -54,12 +54,12 @@ export const routes: Routes = [
   {
     path: 'add-trainer',
     component: AddTrainerComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'edit-trainer/:id',
     component: EditTrainerComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'login',
