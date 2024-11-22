@@ -13,6 +13,8 @@ import { AddPlanComponent } from './feature/plans/components/add-plan/add-plan.c
 import { EditPlanComponent } from './feature/plans/components/edit-plan/edit-plan.component';
 import { EditTrainerComponent } from './feature/trainers/components/edit-trainer/edit-trainer.component';
 import { AddTrainerComponent } from './feature/trainers/components/add-trainer/add-trainer.component';
+import { MembershipClientPageComponent } from './feature/memberships/components/membership-client-page/membership-client-page.component';
+import { MembershipAdminPageComponent } from './feature/memberships/components/membership-admin-page/membership-admin-page.component';
 
 export const routes: Routes = [
   {
@@ -59,6 +61,16 @@ export const routes: Routes = [
   {
     path: 'edit-trainer/:id',
     component: EditTrainerComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'membership',
+    component: MembershipClientPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-memberships',
+    component: MembershipAdminPageComponent,
     canActivate: [AuthGuard, AdminGuard],
   },
   {

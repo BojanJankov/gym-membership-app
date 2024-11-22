@@ -24,6 +24,15 @@
       <li>
         <a routerLink="/">Home</a>
       </li>
+      @if(currentUser().role === "admin"){
+      <li>
+        <a routerLink="/admin-memberships">All memberships</a>
+      </li>
+      } @else {
+      <li>
+        <a routerLink="/membership">Membership</a>
+      </li>
+      }
       <li>
         <a routerLink="/trainers">Trainers</a>
       </li>

@@ -12,13 +12,20 @@
         in mind: your success.
       </p>
       <p>
-        <strong>Are you ready to transform your body and mind?</strong> Let's
-        get started today!
+        Are you ready to transform your body and mind?
+        <strong>Let's get started today!</strong>
       </p>
     </div>
     <div class="buttons-text-container">
-      <app-button text="Explore our plans"></app-button>
+      <app-button
+        text="Explore our plans"
+        [style]="{
+          backgroundColor: '#f6aa1c',
+          fontSize: '16px',
+          
+        }"
+        (btnClick)="onButtonNavigate()"
+      />
     </div>
   </div>
-  <div class="image-container"></div>
 </div>
