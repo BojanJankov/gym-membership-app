@@ -48,12 +48,20 @@ export class MembershipsService {
     }
   }
 
-  findMembershipsByUserId(userId: string) {
-    return this.membershipRepo.find({
+  async findMembershipsByUserId(userId: string) {
+    const memberships = await this.membershipRepo.find({
+      relations: {
+        user: true,
+        plan: true,
+      },
       where: {
         user: { id: userId },
       },
     });
+
+    console.log(memberships);
+
+    return memberships;
   }
 
   async update(id: number, updateMembershipDto: UpdateMembershipDto) {

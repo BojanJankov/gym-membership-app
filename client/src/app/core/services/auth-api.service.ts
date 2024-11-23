@@ -6,6 +6,7 @@ import {
   UserCredentails,
 } from '../../feature/auth/models/auth.model';
 import { BASE_URL } from '../constants/core.constants';
+import { Membership } from '../../feature/memberships/models/memberships.model';
 
 @Injectable({
   providedIn: 'root',

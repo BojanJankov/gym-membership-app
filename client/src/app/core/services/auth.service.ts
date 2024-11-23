@@ -7,6 +7,7 @@ import {
   UserCredentails,
 } from '../../feature/auth/models/auth.model';
 import { tap } from 'rxjs';
+import { Membership } from '../../feature/memberships/models/memberships.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ export class AuthService {
   private router = inject(Router);
 
   currentUser = signal<User>(null);
+  currentUserMemberships = signal<Membership[]>([]);
 
   constructor() {
     this.getCurrentUserFromLocalStorage();

@@ -4,30 +4,26 @@
   </div>
   <div class="memberships-container">
     <div class="membership-card-deafult">
+      <div>No.</div>
       <div>Plan name</div>
       <div>Start date</div>
       <div>Expire date</div>
-      <div>payment status</div>
+      <div>Payment status</div>
     </div>
     <div class="memberships-cards-container">
+      @for(membership of memberships(); track $index){
       <div class="membership-card">
-        <div>Plan name</div>
-        <div>Start date</div>
-        <div>Expire date</div>
-        <div>payment status</div>
+        <div>{{ $index }}.</div>
+        <div>{{ membership.plan.name }}</div>
+        <div>
+          {{ membership.startDate | date : "longDate" }}
+        </div>
+        <div>
+          {{ membership.expireDate | date : "longDate" }}
+        </div>
+        <div>{{ membership.paymentStatus }}</div>
       </div>
-      <div class="membership-card">
-        <div>Plan name</div>
-        <div>Start date</div>
-        <div>Expire date</div>
-        <div>payment status</div>
-      </div>
-      <div class="membership-card">
-        <div>Plan name</div>
-        <div>Start date</div>
-        <div>Expire date</div>
-        <div>payment status</div>
-      </div>
+      }
     </div>
   </div>
 </section>
