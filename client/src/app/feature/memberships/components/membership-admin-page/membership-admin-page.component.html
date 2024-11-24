@@ -1,1 +1,87 @@
-<p>membership-admin-page works!</p>
+<section class="client-membership-page">
+  <div class="membership-heading-container">
+    <h2>All users memberships</h2>
+  </div>
+  <div class="memberships-container">
+    <div class="container">
+      <div class="filter-memberships-container">
+        <div class="search-form">
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search posts..."
+              [(ngModel)]="searchValue"
+            />
+          </div>
+        </div>
+        <div>
+          <app-button text="Add membership" />
+        </div>
+      </div>
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item">
+            <a id="name" class="filter__link">No.</a>
+          </div>
+          <div class="header__item">
+            <a id="wins" class="filter__link filter__link--number">User name</a>
+          </div>
+          <div class="header__item">
+            <a id="draws" class="filter__link filter__link--number">Plan</a>
+          </div>
+          <div class="header__item">
+            <a id="losses" class="filter__link filter__link--number"
+              >Start date</a
+            >
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number"
+              >Expire date</a
+            >
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number">Status</a>
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number"
+              >Edit/delete</a
+            >
+          </div>
+        </div>
+        <div class="table-content">
+          @for(membership of memberships() | search: searchValue(); track
+          $index){
+          <div class="table-row">
+            <div class="table-data">{{ $index }}</div>
+            <div class="table-data">
+              {{ membership.user.firstName }} {{ membership.user.lastName }}
+            </div>
+            <div class="table-data">{{ membership.plan.name }}</div>
+            <div class="table-data">
+              {{ membership.startDate | date : "longDate" }}
+            </div>
+            <div class="table-data">
+              {{ membership.expireDate | date : "longDate" }}
+            </div>
+            <div class="table-data">{{ membership.paymentStatus }}</div>
+            <div class="table-data">
+              <button class="edit-button">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          } @empty {
+          <div class="no-found-message">
+            <h3>No memberships found!</h3>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,145 @@
+.client-membership-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  gap: 100px;
+
+  .membership-heading-container {
+    h2 {
+      font-size: 32px;
+      text-align: center;
+      color: var(--orange-color);
+    }
+  }
+
+  $base-spacing-unit: 24px;
+  $half-spacing-unit: 12px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 100px;
+    background-color: var(--yellow-color);
+  }
+
+  .filter-memberships-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .search-form {
+      display: inline-block;
+      margin-right: 20px;
+      position: relative;
+      top: 0px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: var(--orange-color);
+    }
+
+    .search-input {
+      width: 490px;
+      height: 35px;
+      transition: width 0.4s ease-in-out;
+      padding: 20px 30px 20px 35px;
+      border: 2px solid var(--white-color);
+      border-radius: 50px;
+      background-color: var(--white-color);
+    }
+
+    .search-input:focus {
+      width: 900px;
+      height: 35px;
+      outline: none;
+      border: 2px solid var(--white-color);
+    }
+  }
+
+  .table {
+    width: 1200px;
+    min-height: 335px;
+    border: 1px solid var(--font-color);
+  }
+
+  .table-header {
+    display: flex;
+    width: 100%;
+    background: var(--orange-color);
+    padding: 20px 0;
+  }
+
+  .table-row {
+    display: flex;
+    width: 100%;
+    padding: ($half-spacing-unit * 1.5) 0;
+    background: var(--white-color);
+  }
+
+  .table-data,
+  .header__item {
+    flex: 1 1 20%;
+    text-align: center;
+  }
+
+  .header__item {
+    text-transform: uppercase;
+  }
+
+  .filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: $base-spacing-unit;
+    padding-right: $base-spacing-unit;
+  }
+
+  .edit-button,
+  .delete-button {
+    background-color: var(--orange-color);
+    border: none;
+    color: var(--font-color);
+    padding: 8px 13px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 5px;
+  }
+
+  .no-found-message {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: var(--font-color);
+  }
+}

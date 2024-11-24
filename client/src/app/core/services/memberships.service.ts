@@ -8,7 +8,19 @@ import { Membership } from '../../feature/memberships/models/memberships.model';
 export class MembershipsService {
   private apiService = inject(MembershipsApiService);
 
+  allMemberships = signal<Membership[]>([]);
   userMemberships = signal<Membership[]>([]);
+
+  getAllMemberships() {
+    this.apiService.getAllMemberships().subscribe({
+      next: (response) => {
+        this.allMemberships.set(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 
   getMembershipByUser(userId: string) {
     this.apiService.getMembershipByUser(userId).subscribe({
