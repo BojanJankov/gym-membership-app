@@ -2,28 +2,44 @@
   <div class="membership-heading-container">
     <h2>Your memberships</h2>
   </div>
-  <div class="memberships-container">
-    <div class="membership-card-deafult">
-      <div>No.</div>
-      <div>Plan name</div>
-      <div>Start date</div>
-      <div>Expire date</div>
-      <div>Payment status</div>
-    </div>
-    <div class="memberships-cards-container">
-      @for(membership of memberships(); track $index){
-      <div class="membership-card">
-        <div>{{ $index }}.</div>
-        <div>{{ membership.plan.name }}</div>
-        <div>
-          {{ membership.startDate | date : "longDate" }}
+  <div class="container">
+    <div class="table">
+      <div class="table-header">
+        <div class="header__item">
+          <a id="name" class="filter__link">No.</a>
         </div>
-        <div>
-          {{ membership.expireDate | date : "longDate" }}
+        <div class="header__item">
+          <a id="draws" class="filter__link filter__link--number">Plan</a>
         </div>
-        <div>{{ membership.paymentStatus }}</div>
+        <div class="header__item">
+          <a id="losses" class="filter__link filter__link--number"
+            >Start date</a
+          >
+        </div>
+        <div class="header__item">
+          <a id="total" class="filter__link filter__link--number"
+            >Expire date</a
+          >
+        </div>
+        <div class="header__item">
+          <a id="total" class="filter__link filter__link--number">Status</a>
+        </div>
       </div>
-      }
+      <div class="table-content">
+        @for(membership of memberships(); track $index){
+        <div class="table-row">
+          <div class="table-data">{{ $index }}</div>
+          <div class="table-data">{{ membership.plan.name }}</div>
+          <div class="table-data">
+            {{ membership.startDate | date : "longDate" }}
+          </div>
+          <div class="table-data">
+            {{ membership.expireDate | date : "longDate" }}
+          </div>
+          <div class="table-data">{{ membership.paymentStatus }}</div>
+        </div>
+        }
+      </div>
     </div>
   </div>
 </section>

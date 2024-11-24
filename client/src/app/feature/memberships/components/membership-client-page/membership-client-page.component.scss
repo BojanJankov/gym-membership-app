@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  gap: 100px;
 
   .membership-heading-container {
     h2 {
@@ -12,45 +13,64 @@
     }
   }
 
-  .memberships-container {
+  $base-spacing-unit: 24px;
+  $half-spacing-unit: 12px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  .container {
     width: 100%;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 100px;
     background-color: var(--yellow-color);
-    padding: 10px 20px 50px 20px;
+  }
 
-    .membership-card-deafult {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      border: 2px solid var(--black-color);
-      color: var(--black-color);
-      padding: 10px;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
+  .table {
+    width: 100%;
+    border: 1px solid var(--font-color);
+  }
 
-    .memberships-cards-container {
-      width: 100%;
-      border: 2px solid var(--black-color);
-      padding: 20px 10px;
-    }
+  .table-header {
+    display: flex;
+    width: 100%;
+    background: var(--orange-color);
+    padding: 20px 0;
+  }
 
-    .membership-card {
-      width: 100%;
-      border-bottom: 1px solid var(--black-color);
-      display: flex;
-      justify-content: space-between;
-      color: var(--black-color);
-      padding: 10px;
-      font-size: 18px;
+  .table-row {
+    display: flex;
+    width: 100%;
+    padding: ($half-spacing-unit * 1.5) 0;
+    background: var(--white-color);
+  }
 
-      div {
-        margin-right: 50px;
-      }
-    }
+  .table-data,
+  .header__item {
+    flex: 1 1 20%;
+    text-align: center;
+  }
+
+  .header__item {
+    text-transform: uppercase;
+  }
+
+  .filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: $base-spacing-unit;
+    padding-right: $base-spacing-unit;
   }
 }
