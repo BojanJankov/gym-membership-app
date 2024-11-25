@@ -26,7 +26,7 @@
     }
 
     input,
-    textarea {
+    select {
       width: 100%;
       padding: 12px;
       border: none;
@@ -34,16 +34,6 @@
       font-size: 15px;
       transition: all 0.3s ease;
       color: var(--black-color);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 180px;
-
-      &:focus {
-        border-color: var(--orange-color);
-        outline: none;
-      }
     }
   }
 

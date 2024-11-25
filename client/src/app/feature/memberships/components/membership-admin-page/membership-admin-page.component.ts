@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../../../../core/pipes/search.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-membership-admin-page',
@@ -14,6 +15,7 @@ import { SearchPipe } from '../../../../core/pipes/search.pipe';
 })
 export class MembershipAdminPageComponent {
   private membershipsService = inject(MembershipsService);
+  private router = inject(Router);
 
   searchValue = model<string>('');
 
@@ -21,5 +23,18 @@ export class MembershipAdminPageComponent {
 
   ngOnInit(): void {
     this.membershipsService.getAllMemberships();
+  }
+
+  onAddMembershipNavigate() {
+    this.router.navigate(['add-membership']);
+  }
+
+  onEditMembership(membershipId: number) {
+    this.router.navigate([`edit-membership/${membershipId}`]);
+  }
+
+  onDeleteMembership(membershipId: number) {
+    this.membershipsService.deleteMembership(membershipId);
+    location.reload();
   }
 }

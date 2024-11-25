@@ -41,6 +41,10 @@ export class AuthApiService {
     });
   }
 
+  fetchAllUsers() {
+    return this.http.get<User[]>(`${BASE_URL}/users`);
+  }
+
   getUserById(userId: string) {
     return this.http.get<User>(`${BASE_URL}/users/${userId}`);
   }

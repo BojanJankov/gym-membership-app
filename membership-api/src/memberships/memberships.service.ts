@@ -39,13 +39,17 @@ export class MembershipsService {
   }
 
   async findOne(id: number) {
-    try {
-      const foundMembership = await this.membershipRepo.findOneByOrFail({ id });
+    const foundMembership = await this.membershipRepo.findOne({
+      where: {
+        id: id,
+      },
+      relations: {
+        user: true,
+        plan: true,
+      },
+    });
 
-      return foundMembership;
-    } catch (error) {
-      throw new BadRequestException('Membership Not Found');
-    }
+    return foundMembership;
   }
 
   async findMembershipsByUserId(userId: string) {

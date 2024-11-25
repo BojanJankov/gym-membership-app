@@ -15,6 +15,8 @@ import { EditTrainerComponent } from './feature/trainers/components/edit-trainer
 import { AddTrainerComponent } from './feature/trainers/components/add-trainer/add-trainer.component';
 import { MembershipClientPageComponent } from './feature/memberships/components/membership-client-page/membership-client-page.component';
 import { MembershipAdminPageComponent } from './feature/memberships/components/membership-admin-page/membership-admin-page.component';
+import { AddMembershipComponent } from './feature/memberships/components/add-membership/add-membership.component';
+import { EditMembershipComponent } from './feature/memberships/components/edit-membership/edit-membership.component';
 
 export const routes: Routes = [
   {
@@ -67,6 +69,16 @@ export const routes: Routes = [
     path: 'membership',
     component: MembershipClientPageComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-membership',
+    component: AddMembershipComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'edit-membership/:id',
+    component: EditMembershipComponent,
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
     path: 'admin-memberships',

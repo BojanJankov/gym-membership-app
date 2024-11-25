@@ -9,3 +9,11 @@ export interface Membership {
   plan: Plan;
   user: User;
 }
+
+export interface MembershipReq {
+  startDate: string;
+  expireDate: string;
+  paymentStatus: 'PAID' | 'PENDING';
+  planId: number;
+  userId: string;
+}

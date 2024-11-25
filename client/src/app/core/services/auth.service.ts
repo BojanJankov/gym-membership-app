@@ -18,6 +18,7 @@ export class AuthService {
 
   currentUser = signal<User>(null);
   currentUserMemberships = signal<Membership[]>([]);
+  users = signal<User[]>([]);
 
   constructor() {
     this.getCurrentUserFromLocalStorage();
@@ -87,6 +88,15 @@ export class AuthService {
         this.saveCurrentUserToLocalStorage(this.currentUser());
       })
     );
+  }
+
+  getAllUsers() {
+    this.apiService.fetchAllUsers().subscribe({
+      next: (response) => {
+        this.users.set(response);
+      },
+      error: (error) => console.log(error),
+    });
   }
 
   getUserById(userId: string) {

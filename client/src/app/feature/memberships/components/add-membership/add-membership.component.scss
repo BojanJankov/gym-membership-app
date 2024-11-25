@@ -1,0 +1,12 @@
+.add-membership-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+
+  h2 {
+    font-size: 32px;
+    color: var(--orange-color);
+    text-align: center;
+  }
+}

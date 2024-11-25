@@ -1,0 +1,9 @@
+<section class="edit-membership-page">
+  <div>
+    <h2>Edit membership</h2>
+  </div>
+  <app-membership-form
+    [editMembershipData]="selectedMembership()"
+    (subbmitOutput)="onEditMembership($event)"
+  />
+</section>
