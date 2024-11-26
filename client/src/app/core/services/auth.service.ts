@@ -17,6 +17,7 @@ export class AuthService {
   private router = inject(Router);
 
   currentUser = signal<User>(null);
+  selectedUser = signal<User>(null);
   currentUserMemberships = signal<Membership[]>([]);
   users = signal<User[]>([]);
 
@@ -108,6 +109,15 @@ export class AuthService {
           token: this.currentUser().token,
           refreshToken: this.currentUser().refreshToken,
         });
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  getSelectedUser(userId: string) {
+    this.apiService.getUserById(userId).subscribe({
+      next: (value) => {
+        this.selectedUser.set(value);
       },
       error: (error) => console.log(error),
     });

@@ -1,0 +1,75 @@
+<section class="user-details-page">
+  <div>
+    <h2>User details page</h2>
+  </div>
+  <div class="user-details-container">
+    <div class="user-details-container-heading">
+      <h2>
+        {{ selectedUser()?.firstName }} {{ selectedUser()?.lastName }}'s
+        membership details
+      </h2>
+      <div>
+        <app-button text="Add membership" (btnClick)="onAddMembership()" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item">
+            <a id="name" class="filter__link">No.</a>
+          </div>
+          <div class="header__item">
+            <a id="draws" class="filter__link filter__link--number">Plan</a>
+          </div>
+          <div class="header__item">
+            <a id="losses" class="filter__link filter__link--number"
+              >Start date</a
+            >
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number"
+              >Expire date</a
+            >
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number">Status</a>
+          </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number"
+              >EDIT/DELETE</a
+            >
+          </div>
+        </div>
+        <div class="table-content">
+          @for(membership of memberships(); track $index){
+          <div class="table-row">
+            <div class="table-data">{{ $index }}</div>
+            <div class="table-data">{{ membership.plan.name }}</div>
+            <div class="table-data">
+              {{ membership.startDate | date : "longDate" }}
+            </div>
+            <div class="table-data">
+              {{ membership.expireDate | date : "longDate" }}
+            </div>
+            <div class="table-data">{{ membership.paymentStatus }}</div>
+            <div class="table-data">
+              <button
+                class="edit-button"
+                (click)="onEditMembership(membership.id)"
+              >
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+              <button
+                class="delete-button"
+                (click)="onDeleteMembership(membership.id)"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

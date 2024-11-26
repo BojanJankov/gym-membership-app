@@ -39,6 +39,7 @@ export class EditMembershipComponent implements OnInit {
       this.selectedMembership().id,
       editMembershipData
     );
-    this.router.navigate(['admin-memberships']);
+    this.membershipService.userMemberships.set([]);
+    this.router.navigate([`user-details/${this.selectedMembership().user.id}`]);
   }
 }

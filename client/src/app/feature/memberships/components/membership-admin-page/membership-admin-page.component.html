@@ -1,6 +1,6 @@
 <section class="client-membership-page">
   <div class="membership-heading-container">
-    <h2>All users memberships</h2>
+    <h2>All users</h2>
   </div>
   <div class="memberships-container">
     <div class="container">
@@ -11,16 +11,13 @@
             <input
               type="text"
               class="search-input"
-              placeholder="Search posts..."
+              placeholder="Search users..."
               [(ngModel)]="searchValue"
             />
           </div>
         </div>
         <div>
-          <app-button
-            text="Add membership"
-            (btnClick)="onAddMembershipNavigate()"
-          />
+          <app-button text="Add user" (btnClick)="onAddUser()" />
         </div>
       </div>
       <div class="table">
@@ -29,64 +26,40 @@
             <a id="name" class="filter__link">No.</a>
           </div>
           <div class="header__item">
-            <a id="wins" class="filter__link filter__link--number">User name</a>
+            <a id="wins" class="filter__link filter__link--number"
+              >First name</a
+            >
           </div>
           <div class="header__item">
-            <a id="draws" class="filter__link filter__link--number">Plan</a>
+            <a id="draws" class="filter__link filter__link--number"
+              >Last name</a
+            >
           </div>
           <div class="header__item">
             <a id="losses" class="filter__link filter__link--number"
-              >Start date</a
+              >Username</a
             >
           </div>
           <div class="header__item">
-            <a id="total" class="filter__link filter__link--number"
-              >Expire date</a
-            >
-          </div>
-          <div class="header__item">
-            <a id="total" class="filter__link filter__link--number">Status</a>
-          </div>
-          <div class="header__item">
-            <a id="total" class="filter__link filter__link--number"
-              >Edit/delete</a
-            >
+            <a id="total" class="filter__link filter__link--number">Email</a>
           </div>
         </div>
         <div class="table-content">
-          @for(membership of memberships() | search: searchValue(); track
-          $index){
-          <div class="table-row">
+          @for(user of users() | search: searchValue(); track $index){
+          <div class="table-row" (click)="onUserRowClick(user.id)">
             <div class="table-data">{{ $index }}</div>
             <div class="table-data">
-              {{ membership.user.firstName }} {{ membership.user.lastName }}
-            </div>
-            <div class="table-data">{{ membership.plan.name }}</div>
-            <div class="table-data">
-              {{ membership.startDate | date : "longDate" }}
+              {{ user.firstName }}
             </div>
             <div class="table-data">
-              {{ membership.expireDate | date : "longDate" }}
+              {{ user.lastName }}
             </div>
-            <div class="table-data">{{ membership.paymentStatus }}</div>
-            <div class="table-data">
-              <button
-                class="edit-button"
-                (click)="onEditMembership(membership.id)"
-              >
-                <i class="fa-regular fa-pen-to-square"></i>
-              </button>
-              <button
-                class="delete-button"
-                (click)="onDeleteMembership(membership.id)"
-              >
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </div>
+            <div class="table-data">{{ user.username }}</div>
+            <div class="table-data">{{ user.email }}</div>
           </div>
           } @empty {
           <div class="no-found-message">
-            <h3>No memberships found!</h3>
+            <h3>No users found!</h3>
           </div>
           }
         </div>

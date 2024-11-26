@@ -1,3 +1,5 @@
+import { Membership } from '../../memberships/models/memberships.model';
+
 export interface User {
   id: string;
   firstName: string;
@@ -7,7 +9,7 @@ export interface User {
   token: string;
   refreshToken: string;
   role: string;
-  userDetails: UserDetails;
+  memberships: Membership[];
 }
 
 export interface UserDetails {

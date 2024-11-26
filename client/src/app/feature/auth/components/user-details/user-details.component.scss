@@ -1,16 +1,31 @@
-.client-membership-page {
+.user-details-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
-  gap: 100px;
+  gap: 50px;
 
-  .membership-heading-container {
-    h2 {
-      font-size: 32px;
-      text-align: center;
-      color: var(--orange-color);
-    }
+  h2 {
+    font-size: 32px;
+    color: var(--orange-color);
+    text-align: center;
+  }
+
+  .user-details-container {
+    width: 100%;
+    min-height: 600px;
+    background-color: var(--yellow-color);
+    color: var(--font-color);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-details-container-heading {
+    width: 88%;
+    display: flex;
+    justify-content: space-between;
   }
 
   $base-spacing-unit: 24px;
@@ -27,7 +42,6 @@
 
   .container {
     width: 100%;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,52 +51,8 @@
     background-color: var(--yellow-color);
   }
 
-  .filter-memberships-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    .search-form {
-      display: inline-block;
-      margin-right: 20px;
-      position: relative;
-      top: 0px;
-    }
-
-    .search-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .search-icon {
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
-      color: var(--orange-color);
-    }
-
-    .search-input {
-      width: 490px;
-      height: 35px;
-      transition: width 0.4s ease-in-out;
-      padding: 20px 30px 20px 35px;
-      border: 2px solid var(--white-color);
-      border-radius: 50px;
-      background-color: var(--white-color);
-    }
-
-    .search-input:focus {
-      width: 900px;
-      height: 35px;
-      outline: none;
-      border: 2px solid var(--white-color);
-    }
-  }
-
   .table {
-    width: 1200px;
-    min-height: 335px;
+    width: 100%;
     border: 1px solid var(--font-color);
   }
 
@@ -98,7 +68,7 @@
     width: 100%;
     padding: ($half-spacing-unit * 1.5) 0;
     background: var(--white-color);
-    cursor: pointer;
+    color: var(--black-color);
   }
 
   .table-data,
@@ -131,16 +101,5 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     margin-right: 5px;
-  }
-
-  .no-found-message {
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: var(--font-color);
   }
 }

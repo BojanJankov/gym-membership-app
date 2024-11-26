@@ -35,6 +35,7 @@ export class MembershipFormComponent implements OnInit {
   users = this.authService.users;
   currentUser = inject(AuthService).currentUser;
   editMembershipData = input<Membership>();
+  addMembershipUserId = input<string>();
   membershipForm = this.generateMembershipForm();
   isSubbmited = signal<boolean>(false);
   subbmitOutput = output<MembershipReq>();
@@ -42,6 +43,10 @@ export class MembershipFormComponent implements OnInit {
 
   constructor() {
     effect(() => {
+      if (this.addMembershipUserId()) {
+        this.membershipForm.get('userId').setValue(this.addMembershipUserId());
+      }
+
       if (this.editMembershipData()) {
         const editData: MembershipReq = {
           startDate: this.editMembershipData().startDate,

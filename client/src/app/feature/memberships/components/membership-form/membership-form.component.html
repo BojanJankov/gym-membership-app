@@ -19,17 +19,6 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="user">User</label>
-    <select name="user" id="user" formControlName="userId">
-      <option value="" disabled>Select user:</option>
-      @for(user of users(); track $index){
-      <option value="{{ user.id }}">
-        {{ user.firstName }} {{ user.lastName }}
-      </option>
-      }
-    </select>
-  </div>
-  <div class="form-group">
     <label for="plan">Plan</label>
     <select name="plan" id="plan" formControlName="planId">
       <option value="" disabled>Select plan:</option>

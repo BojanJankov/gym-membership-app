@@ -17,6 +17,7 @@ import { MembershipClientPageComponent } from './feature/memberships/components/
 import { MembershipAdminPageComponent } from './feature/memberships/components/membership-admin-page/membership-admin-page.component';
 import { AddMembershipComponent } from './feature/memberships/components/add-membership/add-membership.component';
 import { EditMembershipComponent } from './feature/memberships/components/edit-membership/edit-membership.component';
+import { UserDetailsComponent } from './feature/auth/components/user-details/user-details.component';
 
 export const routes: Routes = [
   {
@@ -71,7 +72,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'add-membership',
+    path: 'add-membership/user/:id',
     component: AddMembershipComponent,
     canActivate: [AuthGuard, AdminGuard],
   },
@@ -83,6 +84,11 @@ export const routes: Routes = [
   {
     path: 'admin-memberships',
     component: MembershipAdminPageComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'user-details/:id',
+    component: UserDetailsComponent,
     canActivate: [AuthGuard, AdminGuard],
   },
   {

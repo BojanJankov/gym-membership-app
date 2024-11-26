@@ -23,13 +23,16 @@ export class UsersService {
   }
 
   async findUserById(id: string) {
-    try {
-      const foundUser = await this.usersRepo.findOneByOrFail({ id });
+    const foundUser = await this.usersRepo.findOne({
+      where: {
+        id: id,
+      },
+      relations: {
+        memberships: true,
+      },
+    });
 
-      return foundUser;
-    } catch (error) {
-      throw new NotFoundException('User not found');
-    }
+    return foundUser;
   }
 
   async updatePasswordOnUser(
