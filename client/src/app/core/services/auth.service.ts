@@ -8,6 +8,7 @@ import {
 } from '../../feature/auth/models/auth.model';
 import { tap } from 'rxjs';
 import { Membership } from '../../feature/memberships/models/memberships.model';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ import { Membership } from '../../feature/memberships/models/memberships.model';
 export class AuthService {
   private apiService = inject(AuthApiService);
   private router = inject(Router);
+  private notificationService = inject(NotificationService);
 
   currentUser = signal<User>(null);
   selectedUser = signal<User>(null);
@@ -30,8 +32,14 @@ export class AuthService {
       next: () => {
         console.log('User registered');
         this.router.navigate(['login']);
+        this.notificationService.showToast(
+          'Successfully registered, please log in with your new account!',
+          true
+        );
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        this.notificationService.showToast(error, false);
+      },
     });
   }
 
@@ -47,8 +55,12 @@ export class AuthService {
         this.saveCurrentUserToLocalStorage(this.currentUser());
 
         this.router.navigate(['']);
+
+        this.notificationService.showToast('Successfully logged in!', true);
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        this.notificationService.showToast(error.error.message, false);
+      },
     });
   }
 
@@ -72,6 +84,7 @@ export class AuthService {
     this.currentUser.set(null);
     localStorage.clear();
     this.router.navigate(['login']);
+    this.notificationService.showToast('You are logged out!', true);
   }
 
   refreshAccessToken(refreshToken: string) {

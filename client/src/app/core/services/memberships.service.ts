@@ -4,12 +4,14 @@ import {
   Membership,
   MembershipReq,
 } from '../../feature/memberships/models/memberships.model';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MembershipsService {
   private apiService = inject(MembershipsApiService);
+  private notificationService = inject(NotificationService);
 
   allMemberships = signal<Membership[]>([]);
   userMemberships = signal<Membership[]>([]);
@@ -54,10 +56,13 @@ export class MembershipsService {
   createMembership(membershipData: MembershipReq) {
     this.apiService.postMembership(membershipData).subscribe({
       next: () => {
-        console.log('Membership was created!');
+        this.notificationService.showToast(
+          'Successfully created user membership!',
+          true
+        );
       },
       error: (error) => {
-        console.log(error);
+        this.notificationService.showToast(error.error.message, false);
       },
     });
   }
@@ -65,7 +70,10 @@ export class MembershipsService {
   updateMembership(membershipId: number, membershipData: MembershipReq) {
     this.apiService.patchMembership(membershipId, membershipData).subscribe({
       next: () => {
-        console.log('Membership was edited!');
+        this.notificationService.showToast(
+          'Successfully updated user membership!',
+          true
+        );
       },
       error: (error) => {
         console.log(error);
@@ -76,10 +84,16 @@ export class MembershipsService {
   deleteMembership(membershipId: number) {
     this.apiService.removeMembership(membershipId).subscribe({
       next: () => {
-        console.log('Membership was deleted!');
+        this.notificationService.showToast(
+          'Successfully deleted user membership!',
+          true
+        );
       },
       error: (error) => {
-        console.log(error);
+        this.notificationService.showToast(
+          'Some errors during deleting user membership. Try again!',
+          false
+        );
       },
     });
   }

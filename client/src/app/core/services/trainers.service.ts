@@ -4,12 +4,14 @@ import {
   Trainer,
   TrainerReq,
 } from '../../feature/trainers/models/trainers.model';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrainersService {
   private apiService = inject(TrainersApiService);
+  private notificationService = inject(NotificationService);
 
   trainers = signal<Trainer[]>([]);
   selectedTrainer = signal<Trainer>(null);
@@ -37,10 +39,13 @@ export class TrainersService {
   createTrainer(trainerReq: TrainerReq) {
     this.apiService.postTrainer(trainerReq).subscribe({
       next: () => {
-        console.log('Trainer created');
+        this.notificationService.showToast(
+          'Successfully created trainer!',
+          true
+        );
       },
       error: (error) => {
-        console.log(error);
+        this.notificationService.showToast(error.error.message, false);
       },
     });
   }
@@ -48,19 +53,26 @@ export class TrainersService {
   updateTrainer(trainerId: number, trainerReq: TrainerReq) {
     this.apiService.patchTrainer(trainerId, trainerReq).subscribe({
       next: () => {
-        console.log('Trainer successfully updated');
+        this.notificationService.showToast(
+          'Successfully updated trainer!',
+          true
+        );
       },
-      error: (error) => console.log(error),
+      error: (error) =>
+        this.notificationService.showToast(error.error.message, false),
     });
   }
 
   removeTrainer(trainerId: number) {
     this.apiService.deleteTrainer(trainerId).subscribe({
       next: () => {
-        console.log('Successfully deleted trainer');
+        this.notificationService.showToast(
+          'Successfully deleted trainer!',
+          true
+        );
       },
       error: (error) => {
-        console.log(error);
+        this.notificationService.showToast(error.error.message, false);
       },
     });
   }

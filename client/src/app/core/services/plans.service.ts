@@ -1,12 +1,14 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { PlansApiService } from './plans-api.service';
 import { Plan, PlanReq } from '../../feature/plans/models/plans.model';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlansService {
   private apiService = inject(PlansApiService);
+  private notificationService = inject(NotificationService);
 
   plans = signal<Plan[]>([]);
   selectedPlan = signal<Plan>(null);
@@ -32,27 +34,31 @@ export class PlansService {
   createPlan(planReq: PlanReq) {
     this.apiService.postPlan(planReq).subscribe({
       next: () => {
-        console.log('Plan was created!');
+        this.notificationService.showToast('Successfully created plan!', true);
       },
-      error: (error) => console.log(error),
+      error: (error) =>
+        this.notificationService.showToast(error.error.message, false),
     });
   }
 
   updatePlan(planId: number, planReq: PlanReq) {
     this.apiService.patchPlan(planId, planReq).subscribe({
       next: () => {
-        console.log('Plan was updated!');
+        this.notificationService.showToast('Successfully updated plan!', true);
       },
-      error: (error) => console.log(error),
+      error: (error) =>
+        this.notificationService.showToast(error.error.message, false),
     });
   }
 
   deletePlan(planId: number) {
     this.apiService.deletePlan(planId).subscribe({
       next: () => {
-        console.log('Plan was deleted!');
+        this.notificationService.showToast('Successfully deleted plan!', true);
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        this.notificationService.showToast(error.error.message, false);
+      },
     });
   }
 }
