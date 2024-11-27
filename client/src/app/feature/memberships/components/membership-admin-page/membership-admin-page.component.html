@@ -20,11 +20,9 @@
           <app-button text="Add user" (btnClick)="onAddUser()" />
         </div>
       </div>
+
       <div class="table">
         <div class="table-header">
-          <div class="header__item">
-            <a id="name" class="filter__link">No.</a>
-          </div>
           <div class="header__item">
             <a id="wins" class="filter__link filter__link--number"
               >First name</a
@@ -45,23 +43,34 @@
           </div>
         </div>
         <div class="table-content">
-          @for(user of users() | search: searchValue(); track $index){
-          <div class="table-row" (click)="onUserRowClick(user.id)">
-            <div class="table-data">{{ $index }}</div>
-            <div class="table-data">
-              {{ user.firstName }}
-            </div>
-            <div class="table-data">
-              {{ user.lastName }}
-            </div>
-            <div class="table-data">{{ user.username }}</div>
-            <div class="table-data">{{ user.email }}</div>
-          </div>
-          } @empty {
-          <div class="no-found-message">
-            <h3>No users found!</h3>
-          </div>
-          }
+          <p-scroller
+            [items]="users() | search : searchValue()"
+            [itemSize]="50"
+            scrollHeight="300px"
+            orientation="vertical"
+            styleClass="border-1 surface-border"
+            [style]="{ width: '1200px', height: '300px' }"
+          >
+            <ng-template
+              pTemplate="items"
+              let-user
+              ;
+              track
+              $index
+              let-options="options"
+            >
+              <div class="table-row" (click)="onUserRowClick(user.id)">
+                <div class="table-data">
+                  {{ user.firstName }}
+                </div>
+                <div class="table-data">
+                  {{ user.lastName }}
+                </div>
+                <div class="table-data">{{ user.username }}</div>
+                <div class="table-data">{{ user.email }}</div>
+              </div>
+            </ng-template>
+          </p-scroller>
         </div>
       </div>
     </div>

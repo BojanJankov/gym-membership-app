@@ -1,16 +1,16 @@
 import { Component, inject, model } from '@angular/core';
 import { MembershipsService } from '../../../../core/services/memberships.service';
-import { DatePipe } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../../../../core/pipes/search.pipe';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
+import { ScrollerModule } from 'primeng/scroller';
 
 @Component({
   selector: 'app-membership-admin-page',
   standalone: true,
-  imports: [ButtonComponent, FormsModule, SearchPipe],
+  imports: [ButtonComponent, FormsModule, SearchPipe, ScrollerModule],
   templateUrl: './membership-admin-page.component.html',
   styleUrl: './membership-admin-page.component.scss',
 })
