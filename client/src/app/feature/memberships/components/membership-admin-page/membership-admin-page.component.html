@@ -41,6 +41,9 @@
           <div class="header__item">
             <a id="total" class="filter__link filter__link--number">Email</a>
           </div>
+          <div class="header__item">
+            <a id="total" class="filter__link filter__link--number">Role</a>
+          </div>
         </div>
         <div class="table-content">
           <p-scroller
@@ -68,6 +71,7 @@
                 </div>
                 <div class="table-data">{{ user.username }}</div>
                 <div class="table-data">{{ user.email }}</div>
+                <div class="table-data">{{ user.role }}</div>
               </div>
             </ng-template>
           </p-scroller>

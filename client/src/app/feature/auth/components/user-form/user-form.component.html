@@ -1,0 +1,57 @@
+<form class="form" [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <input
+      id="firstName"
+      placeholder="First name (3-20 characters)"
+      type="text"
+      formControlName="firstName"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      id="lastName"
+      placeholder="Last name (3-20 characters)"
+      type="text"
+      formControlName="lastName"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      id="username"
+      placeholder="Username (8-30 characters)"
+      type="text"
+      formControlName="username"
+    />
+  </div>
+  <div class="form-group">
+    <input placeholder="Valid email" type="text" formControlName="email" />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Password (8-30 characters)"
+      type="password"
+      formControlName="password"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Confirm password"
+      type="password"
+      formControlName="confirmPassword"
+    />
+  </div>
+  @if(userForm.controls.confirmPassword.touched &&
+  userForm.controls.confirmPassword.errors.passwordMismatch) {
+  <p class="form-error">Passwords must match</p>
+  } @if(isSubmitted() && userForm.invalid && userForm.touched) {
+  <p class="form-error">All fields are required!</p>
+  }
+  <div class="login-form-button-div">
+    <app-button
+      text="Add User"
+      class="register-button"
+      type="submit"
+      [style]="{ backgroundColor: '#bc3908' }"
+    />
+  </div>
+</form>

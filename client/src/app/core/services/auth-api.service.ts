@@ -18,6 +18,10 @@ export class AuthApiService {
     return this.http.post(`${BASE_URL}/auth/register`, reqeust);
   }
 
+  addUser(reqeust: RegisterReq) {
+    return this.http.post(`${BASE_URL}/users`, reqeust);
+  }
+
   loginUser(userCredentials: UserCredentails) {
     return this.http.post<User>(`${BASE_URL}/auth/login`, userCredentials, {
       observe: 'response',

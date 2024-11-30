@@ -27,6 +27,18 @@ export class AuthService {
     this.getCurrentUserFromLocalStorage();
   }
 
+  createUser(request: RegisterReq) {
+    this.apiService.addUser(request).subscribe({
+      next: () => {
+        console.log('User added');
+        this.notificationService.showToast('Successfully added user!', true);
+      },
+      error: (error) => {
+        this.notificationService.showToast(error, false);
+      },
+    });
+  }
+
   registerUser(request: RegisterReq) {
     this.apiService.registerUser(request).subscribe({
       next: () => {
