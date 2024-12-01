@@ -13,10 +13,8 @@ import { Router } from '@angular/router';
 })
 export class AddPlanComponent {
   private planService = inject(PlansService);
-  private router = inject(Router);
 
   onAddOutput(planData: PlanReq) {
     this.planService.createPlan(planData);
-    this.router.navigate(['plans']);
   }
 }

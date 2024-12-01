@@ -13,10 +13,8 @@ import { Router } from '@angular/router';
 })
 export class AddTrainerComponent {
   private trainerService = inject(TrainersService);
-  private router = inject(Router);
 
   onAddTrainer(trainerData: TrainerReq) {
     this.trainerService.createTrainer(trainerData);
-    this.router.navigate(['trainers']);
   }
 }

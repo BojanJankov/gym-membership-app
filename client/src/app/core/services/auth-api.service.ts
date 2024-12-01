@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import {
   RegisterReq,
+  UpdateUserReq,
   User,
   UserCredentails,
 } from '../../feature/auth/models/auth.model';
@@ -51,5 +52,13 @@ export class AuthApiService {
 
   getUserById(userId: string) {
     return this.http.get<User>(`${BASE_URL}/users/${userId}`);
+  }
+
+  updateUser(userId: string, updateUserData: UpdateUserReq) {
+    return this.http.patch(`${BASE_URL}/users/${userId}`, updateUserData);
+  }
+
+  deleteUser(userId: string) {
+    return this.http.delete(`${BASE_URL}/users/${userId}`);
   }
 }

@@ -9,6 +9,7 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { hash } from 'bcryptjs';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -68,6 +69,14 @@ export class UsersService {
     foundUser.refreshTokens = foundUser.refreshTokens.filter(
       (token) => token !== refreshToken,
     );
+
+    await this.usersRepo.save(foundUser);
+  }
+
+  async updateUser(userId: string, updateUserData: UpdateUserDto) {
+    const foundUser = await this.findUserById(userId);
+
+    Object.assign(foundUser, updateUserData);
 
     await this.usersRepo.save(foundUser);
   }

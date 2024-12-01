@@ -1,0 +1,68 @@
+.form {
+  width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--yellow-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--orange-color);
+
+  h2 {
+    text-align: center;
+    color: var(--font-color);
+    font-size: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--font-color);
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      color: var(--black-color);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 180px;
+
+      &:focus {
+        border-color: var(--orange-color);
+        outline: none;
+      }
+    }
+  }
+
+  input.ng-touched.ng-invalid {
+    box-shadow: 0 5px 10px #7b1d20, 0 2px 4px #7b1d20;
+  }
+}
+
+.error-form-message-container {
+  text-align: center;
+}
+
+@media only screen and (max-width: 440px) {
+  .form {
+    width: 335px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .form {
+    width: 650px;
+  }
+}

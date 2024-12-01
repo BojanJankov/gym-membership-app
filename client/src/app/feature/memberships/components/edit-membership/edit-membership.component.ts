@@ -15,7 +15,6 @@ import { MembershipReq } from '../../models/memberships.model';
 export class EditMembershipComponent implements OnInit {
   private membershipService = inject(MembershipsService);
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
 
   currentUser = inject(AuthService).currentUser;
   selectedMembership = this.membershipService.selectedMembership;
@@ -39,7 +38,5 @@ export class EditMembershipComponent implements OnInit {
       this.selectedMembership().id,
       editMembershipData
     );
-    this.membershipService.userMemberships.set([]);
-    this.router.navigate([`user-details/${this.selectedMembership().user.id}`]);
   }
 }

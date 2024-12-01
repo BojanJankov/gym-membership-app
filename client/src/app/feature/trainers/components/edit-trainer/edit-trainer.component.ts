@@ -15,7 +15,6 @@ import { TrainerReq } from '../../models/trainers.model';
 export class EditTrainerComponent {
   private trainerService = inject(TrainersService);
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
 
   currentUser = inject(AuthService).currentUser;
   selectedTrainer = this.trainerService.selectedTrainer;
@@ -39,6 +38,5 @@ export class EditTrainerComponent {
       this.selectedTrainer().id,
       editTrainerData
     );
-    this.router.navigate(['trainers']);
   }
 }

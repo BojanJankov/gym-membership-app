@@ -3,6 +3,7 @@ import { AuthApiService } from './auth-api.service';
 import { Router } from '@angular/router';
 import {
   RegisterReq,
+  UpdateUserReq,
   User,
   UserCredentails,
 } from '../../feature/auth/models/auth.model';
@@ -31,6 +32,7 @@ export class AuthService {
     this.apiService.addUser(request).subscribe({
       next: () => {
         console.log('User added');
+        this.router.navigate(['admin-memberships']);
         this.notificationService.showToast('Successfully added user!', true);
       },
       error: (error) => {
@@ -145,6 +147,30 @@ export class AuthService {
         this.selectedUser.set(value);
       },
       error: (error) => console.log(error),
+    });
+  }
+
+  updateUser(userId: string, updateUserData: UpdateUserReq) {
+    this.apiService.updateUser(userId, updateUserData).subscribe({
+      next: () => {
+        this.users.set([]);
+        this.router.navigate(['admin-memberships']);
+        this.notificationService.showToast('User successfully updated!', true);
+      },
+      error: (error) => {
+        this.notificationService.showToast(error.error.message, false);
+      },
+    });
+  }
+
+  deleteUser(userId: string) {
+    this.apiService.deleteUser(userId).subscribe({
+      next: () => {
+        this.notificationService.showToast('User successfully deleted!', true);
+      },
+      error: (error) => {
+        this.notificationService.showToast(error.error.message, false);
+      },
     });
   }
 }

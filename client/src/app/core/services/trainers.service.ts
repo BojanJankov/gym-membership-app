@@ -5,6 +5,7 @@ import {
   TrainerReq,
 } from '../../feature/trainers/models/trainers.model';
 import { NotificationService } from './notification.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ import { NotificationService } from './notification.service';
 export class TrainersService {
   private apiService = inject(TrainersApiService);
   private notificationService = inject(NotificationService);
+  private router = inject(Router);
 
   trainers = signal<Trainer[]>([]);
   selectedTrainer = signal<Trainer>(null);
@@ -39,6 +41,7 @@ export class TrainersService {
   createTrainer(trainerReq: TrainerReq) {
     this.apiService.postTrainer(trainerReq).subscribe({
       next: () => {
+        this.router.navigate(['trainers']);
         this.notificationService.showToast(
           'Successfully created trainer!',
           true
@@ -53,6 +56,7 @@ export class TrainersService {
   updateTrainer(trainerId: number, trainerReq: TrainerReq) {
     this.apiService.patchTrainer(trainerId, trainerReq).subscribe({
       next: () => {
+        this.router.navigate(['trainers']);
         this.notificationService.showToast(
           'Successfully updated trainer!',
           true

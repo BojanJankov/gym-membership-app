@@ -21,7 +21,6 @@ export class AddMembershipComponent implements OnInit {
 
   onAddMembership(membershipAddData: MembershipReq) {
     this.membershipService.createMembership(membershipAddData);
-    this.membershipService.userMemberships.set([]);
     this.router.navigate([`user-details/${this.selectedUserId()}`]);
   }
 

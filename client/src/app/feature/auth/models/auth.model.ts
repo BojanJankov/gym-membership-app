@@ -12,6 +12,14 @@ export interface User {
   memberships: Membership[];
 }
 
+export interface UpdateUserReq {
+  firstName?: string;
+  lastName?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+}
+
 export interface UserDetails {
   id: string;
   phoneNumber: number;

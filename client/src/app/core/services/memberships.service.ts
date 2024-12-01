@@ -5,6 +5,7 @@ import {
   MembershipReq,
 } from '../../feature/memberships/models/memberships.model';
 import { NotificationService } from './notification.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ import { NotificationService } from './notification.service';
 export class MembershipsService {
   private apiService = inject(MembershipsApiService);
   private notificationService = inject(NotificationService);
+  private router = inject(Router);
 
   allMemberships = signal<Membership[]>([]);
   userMemberships = signal<Membership[]>([]);
@@ -56,6 +58,7 @@ export class MembershipsService {
   createMembership(membershipData: MembershipReq) {
     this.apiService.postMembership(membershipData).subscribe({
       next: () => {
+        this.userMemberships.set([]);
         this.notificationService.showToast(
           'Successfully created user membership!',
           true
@@ -70,6 +73,10 @@ export class MembershipsService {
   updateMembership(membershipId: number, membershipData: MembershipReq) {
     this.apiService.patchMembership(membershipId, membershipData).subscribe({
       next: () => {
+        this.userMemberships.set([]);
+        this.router.navigate([
+          `user-details/${this.selectedMembership().user.id}`,
+        ]);
         this.notificationService.showToast(
           'Successfully updated user membership!',
           true

@@ -36,4 +36,12 @@ export class MembershipAdminPageComponent {
   onUserRowClick(userId: string) {
     this.router.navigate([`user-details/${userId}`]);
   }
+
+  onUserDelete(userId: string) {
+    this.authService.deleteUser(userId);
+  }
+
+  onUserEdit(userId: string) {
+    this.router.navigate([`edit-user/${userId}`]);
+  }
 }

@@ -1,4 +1,11 @@
-import { Component, inject, output, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import {
   AbstractControl,
@@ -8,7 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { isEmail } from 'validator';
-import { RegisterReq } from '../../models/auth.model';
+import { RegisterReq, User } from '../../models/auth.model';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 
 @Component({
@@ -98,7 +105,7 @@ export class UserFormComponent {
 
     if (this.userForm.invalid) return;
 
-    const registerReq: RegisterReq = {
+    const addUserData: RegisterReq = {
       firstName: this.userForm.controls.firstName.value,
       lastName: this.userForm.controls.lastName.value,
       username: this.userForm.controls.username.value,
@@ -108,6 +115,6 @@ export class UserFormComponent {
 
     console.log(this.userForm.value);
 
-    this.subbmitOutput.emit(registerReq);
+    this.authService.createUser(addUserData);
   }
 }
