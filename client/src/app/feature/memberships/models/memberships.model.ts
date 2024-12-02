@@ -8,6 +8,7 @@ export interface Membership {
   paymentStatus: 'PAID' | 'PENDING';
   plan: Plan;
   user: User;
+  isActive?: boolean;
 }
 
 export interface MembershipReq {

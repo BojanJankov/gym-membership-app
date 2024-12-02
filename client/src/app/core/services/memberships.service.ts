@@ -6,6 +6,7 @@ import {
 } from '../../feature/memberships/models/memberships.model';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,15 +33,28 @@ export class MembershipsService {
   }
 
   getMembershipByUser(userId: string) {
-    this.apiService.getMembershipByUser(userId).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.userMemberships.set(response);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.apiService
+      .getMembershipByUser(userId)
+      .pipe(
+        map((memberships: Membership[]) => {
+          return memberships.map((membersip) => {
+            if (new Date(membersip.expireDate) > new Date()) {
+              return { ...membersip, isActive: true };
+            } else {
+              return { ...membersip, isActive: false };
+            }
+          });
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.userMemberships.set(response);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
   getMembershipById(memebrshipId: number) {

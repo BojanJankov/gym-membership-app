@@ -22,7 +22,14 @@
           >
         </div>
         <div class="header__item">
-          <a id="total" class="filter__link filter__link--number">Status</a>
+          <a id="total" class="filter__link filter__link--number"
+            >Payment Status</a
+          >
+        </div>
+        <div class="header__item">
+          <a id="total" class="filter__link filter__link--number"
+            >Active status</a
+          >
         </div>
       </div>
       <div class="table-content">
@@ -36,7 +43,19 @@
           <div class="table-data">
             {{ membership.expireDate | date : "longDate" }}
           </div>
-          <div class="table-data">{{ membership.paymentStatus }}</div>
+          <div class="table-data">
+            {{ membership.paymentStatus }}
+          </div>
+          <div class="table-data">
+            @if(membership.isActive){
+            <i
+              class="fa-solid fa-user-check"
+              [ngStyle]="{ color: 'green' }"
+            ></i>
+            }@else {
+            <i class="fa-solid fa-user-xmark" [ngStyle]="{ color: 'red' }"></i>
+            }
+          </div>
         </div>
         }
       </div>

@@ -6,7 +6,7 @@ import { DatePipe, NgStyle } from '@angular/common';
 @Component({
   selector: 'app-membership-client-page',
   standalone: true,
-  imports: [DatePipe, DatePipe],
+  imports: [DatePipe, DatePipe, NgStyle],
   templateUrl: './membership-client-page.component.html',
   styleUrl: './membership-client-page.component.scss',
 })
