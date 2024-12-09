@@ -20,6 +20,7 @@ import { EditMembershipComponent } from './feature/memberships/components/edit-m
 import { UserDetailsComponent } from './feature/auth/components/user-details/user-details.component';
 import { AddUserComponent } from './feature/auth/components/add-user/add-user.component';
 import { EditUserComponent } from './feature/auth/components/edit-user/edit-user.component';
+import { UserPanelComponent } from './feature/auth/components/user-panel/user-panel.component';
 
 export const routes: Routes = [
   {
@@ -102,6 +103,11 @@ export const routes: Routes = [
     path: 'edit-user/:id',
     component: EditUserComponent,
     canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'user-panel',
+    component: UserPanelComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

@@ -40,4 +40,42 @@
       }
     }
   }
+
+  .user-badge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--font-color);
+    font-weight: 300;
+
+    &:hover,
+    &.active {
+      color: var(--orange-color);
+    }
+  }
+
+  .dropdown {
+    box-shadow: var(--box-shadow);
+    position: absolute;
+    z-index: 999999;
+    right: 2px;
+    top: 60px;
+    background-color: var(--yellow-color);
+
+    &-item {
+      margin: 0;
+      padding: 15px 25px;
+      border-bottom: 1.5px solid black;
+      cursor: pointer;
+      text-align: center;
+
+      &:hover {
+        background-color: var(--dark-red);
+      }
+    }
+  }
 }
