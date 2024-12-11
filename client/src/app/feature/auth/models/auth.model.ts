@@ -9,6 +9,7 @@ export interface User {
   token: string;
   refreshToken: string;
   role: string;
+  userDetails: UserDetails;
   memberships: Membership[];
 }
 
@@ -24,6 +25,7 @@ export interface UserDetails {
   id: string;
   phoneNumber: number;
   age: number;
+  profilePhoto: string;
   dateOfBirth: string;
   gender: string;
   city: string;

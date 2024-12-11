@@ -9,6 +9,7 @@ import { TrainersModule } from './trainers/trainers.module';
 import { PlansModule } from './plans/plans.module';
 import { MembershipsModule } from './memberships/memberships.module';
 import { ContactModule } from './contact/contact.module';
+import { UserDetailsModule } from './user-details/user-details.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ContactModule } from './contact/contact.module';
     PlansModule,
     MembershipsModule,
     ContactModule,
+    UserDetailsModule,
   ],
 
   controllers: [AppController],

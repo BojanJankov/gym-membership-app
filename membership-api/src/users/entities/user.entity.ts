@@ -1,7 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { RoleType } from 'src/roles/roles.model';
 import { Membership } from 'src/memberships/entities/membership.entity';
+import { UserDetails } from 'src/user-details/entities/user-details.entity';
 
 @Entity()
 export class User {
@@ -41,6 +49,10 @@ export class User {
     nullable: true,
   })
   refreshTokens: string[];
+
+  @OneToOne(() => UserDetails, (userDetails) => userDetails.user)
+  @JoinColumn()
+  userDetails: UserDetails;
 
   @OneToMany(() => Membership, (memberships) => memberships.user)
   memberships: Membership[];

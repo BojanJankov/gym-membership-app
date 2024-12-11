@@ -30,6 +30,7 @@ export class UsersService {
       },
       relations: {
         memberships: true,
+        userDetails: true,
       },
     });
 
