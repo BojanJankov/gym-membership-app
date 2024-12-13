@@ -3,6 +3,7 @@ import { AuthApiService } from './auth-api.service';
 import { Router } from '@angular/router';
 import {
   RegisterReq,
+  UpdatePasswordReq,
   UpdateUserReq,
   User,
   UserCredentails,
@@ -171,6 +172,36 @@ export class AuthService {
       error: (error) => {
         this.notificationService.showToast(error.error.message, false);
       },
+    });
+  }
+
+  getUserDetailsByUser(userId: string) {
+    this.apiService.getUserDetilsByUser(userId).subscribe({
+      next: (value) => {
+        this.currentUser.update((prev) => {
+          return { ...prev, userDetails: value };
+        });
+        this.saveCurrentUserToLocalStorage({
+          ...this.currentUser(),
+          token: this.currentUser().token,
+          refreshToken: this.currentUser().refreshToken,
+        });
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  updatePasswordOnUser(userId: string, updatePasswordDto: UpdatePasswordReq) {
+    this.apiService.updatePasswordOnUser(userId, updatePasswordDto).subscribe({
+      next: () => {
+        console.log('Password updated!');
+        this.notificationService.showToast(
+          'Password successfully changed!',
+          true
+        );
+      },
+      error: (error) =>
+        this.notificationService.showToast(error.error.message, false),
     });
   }
 }

@@ -12,6 +12,7 @@ import { UserDetailsService } from './user-details.service';
 import { CreateUserDetailsDto } from './dto/create-user-details.dto';
 import { UpdateUserDetailsDto } from './dto/update-user-details.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { CreateUserPhotoDto } from './dto/create-user-photo.dto';
 
 @UseGuards(AuthGuard)
 @Controller('user-details')
@@ -29,7 +30,7 @@ export class UserDetailsController {
   @Post('/add-photo/:userDetailsId')
   addPhoto(
     @Param('userDetailsId') userDetailsId: string,
-    @Body() profilePhoto: string,
+    @Body() profilePhoto: CreateUserPhotoDto,
   ) {
     return this.usersDetailsService.addProfilePhotoToDetails(
       userDetailsId,

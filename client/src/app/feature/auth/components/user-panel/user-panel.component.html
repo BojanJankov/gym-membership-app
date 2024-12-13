@@ -2,33 +2,150 @@
   <div class="user-panel-container">
     <div class="user-container-left">
       <div class="image-container">
+        @if(currentUser().userDetails.profilePhoto){
         <img
-          src="/images/placeholder-image.jpg && {{
-            currentUser().userDetails?.profilePhoto
-          }}"
+          src="{{ currentUser().userDetails.profilePhoto }}"
           alt=""
+          width="300px"
+          height="300px"
         />
+        } @else {
+        <img src="/images/placeholder-image.jpg" alt="" />
+        }
       </div>
       <div class="user-information">
         <div>
           <h2>{{ currentUser().firstName }} {{ currentUser().lastName }}</h2>
         </div>
         <div class="button-image-container">
-          <app-button text="UPLOAD" [style]="{ width: '100px' }" />
-          <app-button text="SAVE" [style]="{ width: '100px' }" />
+          @if(currentUser().userDetails.profilePhoto){
+          <app-button
+            text="CHANGE PHOTO"
+            [style]="{ width: '120px' }"
+            (btnClick)="onUploadPhotoClick()"
+          />
+          }@else {
+          <app-button
+            text="UPLOAD PHOTO"
+            [style]="{ width: '120px' }"
+            (btnClick)="onUploadPhotoClick()"
+          />
+          }
         </div>
       </div>
     </div>
     <div class="user-container-right">
       <div class="heading-div-container">
         <div>
-          <h2>User informations</h2>
+          <h2>
+            @if(!isAuthInfoShown()){ User informations } @else { Auth
+            informations }
+          </h2>
         </div>
         <div>
-          <a><i class="fa-solid fa-gear"></i></a>
+          @if(!isAuthInfoShown()){
+          <a (click)="onSettingsButtonClick()"
+            ><i class="fa-solid fa-gear"></i
+          ></a>
+          } @else {
+          <a (click)="onBackButtonClick()"
+            ><i class="fa-solid fa-circle-left"></i
+          ></a>
+          }
         </div>
       </div>
-      <div class="user-informations-div-container"></div>
+      <div class="user-informations-div-container">
+        @if(!isAuthInfoShown()){
+        <div class="profile-panel-informations">
+          <div class="profile-panel-info-row">
+            <strong>Date of birth:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.dateOfBirth }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Age:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.age }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Gender:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.gender }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Phone number:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.phoneNumber }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Country:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.country }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>City:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().userDetails?.city }}
+            </div>
+          </div>
+        </div>
+        <div class="user-informations-buttons-div-container">
+          @if(!currentUser().userDetails){
+          <app-button text="Add details" (btnClick)="onAddDetailsClick()" />
+          } @else {
+          <app-button text="Edit details" (btnClick)="onEditDetailsClick()" />
+          }
+        </div>
+        } @else {
+        <form
+          class="profile-panel-informations"
+          [formGroup]="changePasswordForm"
+        >
+          <div class="profile-panel-info-row">
+            <strong>Username:</strong>
+            <div class="info-row-data-div">
+              {{ currentUser().username }}
+            </div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Email:</strong>
+            <div class="info-row-data-div">{{ currentUser().email }}</div>
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>New Password:</strong>
+            <input
+              formControlName="newPassword"
+              type="text"
+              class="info-row-data-div"
+            />
+          </div>
+          <div class="profile-panel-info-row">
+            <strong>Confirm password:</strong>
+            <input
+              formControlName="confirmNewPassword"
+              type="text"
+              class="info-row-data-div"
+            />
+          </div>
+          @if(changePasswordForm.controls.newPassword.touched &&
+          changePasswordForm.controls.newPassword.errors?.passwordMismatch) {
+          <p class="form-error">Passwords must match</p>
+          }
+        </form>
+        <div class="user-informations-buttons-div-container">
+          <app-button
+            text="Change password"
+            (btnClick)="onSubmitChangePassForm()"
+          />
+        </div>
+
+        }
+      </div>
     </div>
   </div>
 </section>

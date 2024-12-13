@@ -1,0 +1,14 @@
+<form class="form" [formGroup]="userPhotoForm" (ngSubmit)="onSubmitPhotoForm()">
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+  </div>
+  <div class="error-form-message-container">
+    @if(isSubbmited() && userPhotoForm.invalid && userPhotoForm.touched){
+    <p class="form-error">All fileds are required!</p>
+    }
+  </div>
+  <div class="login-form-button-div">
+    <app-button text="Upload photo" type="submit" />
+  </div>
+</form>

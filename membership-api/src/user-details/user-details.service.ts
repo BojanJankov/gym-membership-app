@@ -4,6 +4,7 @@ import { UserDetails } from './entities/user-details.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDetailsDto } from './dto/create-user-details.dto';
 import { UpdateUserDetailsDto } from './dto/update-user-details.dto';
+import { CreateUserPhotoDto } from './dto/create-user-photo.dto';
 
 @Injectable()
 export class UserDetailsService {
@@ -21,17 +22,22 @@ export class UserDetailsService {
     });
   }
 
-  async addProfilePhotoToDetails(userDetailsId: string, photo: string) {
+  async addProfilePhotoToDetails(
+    userDetailsId: string,
+    photo: CreateUserPhotoDto,
+  ) {
     const foundDetails = await this.findUserDetailsById(userDetailsId);
+
+    console.log('dobivame slika', photo.profilePhoto);
 
     const newDetails: UserDetails = {
       ...foundDetails,
-      profilePhoto: photo,
+      profilePhoto: photo.profilePhoto,
     };
 
-    Object.assign(foundDetails, newDetails);
+    console.log(newDetails.profilePhoto);
 
-    await this.usersDetailsRepo.save(foundDetails);
+    await this.usersDetailsRepo.save(newDetails);
   }
 
   findAllUserDetails() {

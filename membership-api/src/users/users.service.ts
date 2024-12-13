@@ -56,6 +56,15 @@ export class UsersService {
     return this.usersRepo.findOneBy({ email });
   }
 
+  async findUserDetailsByUser(id: string) {
+    const foundUser = await this.usersRepo.findOne({
+      where: { id },
+      relations: { userDetails: true },
+    });
+
+    return foundUser.userDetails;
+  }
+
   async saveRefreshToken(userId: string, refreshToken: string) {
     const foundUser = await this.findUserById(userId);
 

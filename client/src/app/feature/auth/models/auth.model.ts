@@ -42,6 +42,15 @@ export interface CreateUserDetailsReq {
   country: string;
 }
 
+export interface UpdateUserDetailsReq {
+  phoneNumber?: number;
+  age?: number;
+  dateOfBirth?: string;
+  gender?: string;
+  city?: string;
+  country?: string;
+}
+
 export interface UserCredentails {
   email: string;
   password: string;
@@ -54,4 +63,12 @@ export interface RegisterReq {
   email: string;
   password: string;
   role?: string;
+}
+
+export interface UpdatePasswordReq {
+  newPassword: string;
+}
+
+export interface PorfilePhotoReq {
+  profilePhoto: string;
 }

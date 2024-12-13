@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { CreateUserDetailsReq } from '../../feature/auth/models/auth.model';
+import {
+  CreateUserDetailsReq,
+  PorfilePhotoReq,
+  UpdateUserDetailsReq,
+} from '../../feature/auth/models/auth.model';
 import { BASE_URL } from '../constants/core.constants';
 
 @Injectable({
@@ -13,10 +17,17 @@ export class UserDetailsApiService {
     return this.http.post(`${BASE_URL}/user-details/${userId}`, userDetails);
   }
 
-  addPhotoToUserDetails(userDetailsId: string, photo: string) {
+  updateUserDetails(userDetailsId: string, userDetails: UpdateUserDetailsReq) {
+    return this.http.patch(
+      `${BASE_URL}/user-details/${userDetailsId}`,
+      userDetails
+    );
+  }
+
+  addPhotoToUserDetails(userDetailsId: string, profilePhoto: PorfilePhotoReq) {
     return this.http.post(
       `${BASE_URL}/user-details/add-photo/${userDetailsId}`,
-      photo
+      profilePhoto
     );
   }
 }

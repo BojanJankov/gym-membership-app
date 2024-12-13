@@ -12,7 +12,7 @@ export class UserDetails {
   @Column()
   age: number;
 
-  @Column()
+  @Column({ nullable: true })
   profilePhoto: string;
 
   @Column()

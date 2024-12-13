@@ -42,6 +42,12 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(AuthGuard)
+  @Get('user-details/:userId')
+  findUserDetailsByUser(@Param('userId') userId: string) {
+    return this.usersService.findUserDetailsByUser(userId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findUserById(id);

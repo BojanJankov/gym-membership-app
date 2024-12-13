@@ -21,6 +21,9 @@ import { UserDetailsComponent } from './feature/auth/components/user-details/use
 import { AddUserComponent } from './feature/auth/components/add-user/add-user.component';
 import { EditUserComponent } from './feature/auth/components/edit-user/edit-user.component';
 import { UserPanelComponent } from './feature/auth/components/user-panel/user-panel.component';
+import { AddUserDetailsComponent } from './feature/auth/components/add-user-details/add-user-details.component';
+import { EditUserDetailsComponent } from './feature/auth/components/edit-user-details/edit-user-details.component';
+import { AddUserPhotoComponent } from './feature/auth/components/add-user-photo/add-user-photo.component';
 
 export const routes: Routes = [
   {
@@ -107,6 +110,21 @@ export const routes: Routes = [
   {
     path: 'user-panel',
     component: UserPanelComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-user-details',
+    component: AddUserDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-user-details/:id',
+    component: EditUserDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-user-photo',
+    component: AddUserPhotoComponent,
     canActivate: [AuthGuard],
   },
   {
