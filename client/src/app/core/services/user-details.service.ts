@@ -6,6 +6,7 @@ import {
 } from '../../feature/auth/models/auth.model';
 import { UserDetailsApiService } from './user-details-api.service';
 import { Router } from '@angular/router';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,15 @@ import { Router } from '@angular/router';
 export class UserDetailsService {
   private apiService = inject(UserDetailsApiService);
   private router = inject(Router);
+  private notificationService = inject(NotificationService);
 
   createUserDetails(userId: string, userDetails: CreateUserDetailsReq) {
     this.apiService.createUserDetails(userId, userDetails).subscribe({
       next: () => {
-        console.log('User details added');
+        this.notificationService.showToast(
+          'Successfully added user details!',
+          true
+        );
         this.router.navigate(['user-panel']);
       },
       error: (error) => {
@@ -34,7 +39,10 @@ export class UserDetailsService {
       .updateUserDetails(userDetailsId, editUserDetails)
       .subscribe({
         next: () => {
-          console.log('User details updated');
+          this.notificationService.showToast(
+            'Successfully updated user details!',
+            true
+          );
           this.router.navigate(['user-panel']);
         },
         error: (error) => {
@@ -48,7 +56,10 @@ export class UserDetailsService {
       .addPhotoToUserDetails(userDetailsId, profilePhoto)
       .subscribe({
         next: () => {
-          console.log('Photo uploded');
+          this.notificationService.showToast(
+            'Successfully updated profile picture!',
+            true
+          );
           this.router.navigate(['user-panel']);
         },
         error: (error) => {
